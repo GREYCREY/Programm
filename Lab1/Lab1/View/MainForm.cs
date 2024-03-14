@@ -42,7 +42,7 @@ namespace Lab1
                     ParseAnswerLabel.Text = "Некорректно введены данные!";
                 }
                 isInt = int.TryParse(temp, out examination);
-                if(isInt)
+                if (isInt)
                 {
                     ParseAnswerLabel.Text = "Введите название дня текстом.";
                 }
@@ -83,7 +83,10 @@ namespace Lab1
             IntValueTextBox.Text = ValuesListBox.SelectedIndex.ToString();
         }
 
-        
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void FillingValuesListBox<T>()
         {

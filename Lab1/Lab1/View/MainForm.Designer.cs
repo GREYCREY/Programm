@@ -46,16 +46,29 @@
             ChooseEnumerationLabel = new Label();
             ChooseValueLabel = new Label();
             IntValueLabel = new Label();
+            tabPage2 = new TabPage();
+            groupBox4 = new GroupBox();
+            listBox1 = new ListBox();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            LenghtLabel = new Label();
+            WidthLabel = new Label();
+            ColorLabel = new Label();
+            FindRectangle = new Button();
             tabPage1.SuspendLayout();
             EnumsTabs.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(EnumsTabs);
+            tabPage1.Controls.Add(tabPage2);
             tabPage1.Dock = DockStyle.Fill;
             tabPage1.Location = new Point(0, 0);
             tabPage1.Name = "tabPage1";
@@ -87,7 +100,6 @@
             groupBox3.TabIndex = 15;
             groupBox3.TabStop = false;
             groupBox3.Text = "Season Handle";
-            
             // 
             // ChooseSeasonLabel
             // 
@@ -145,7 +157,6 @@
             ValueForParsingTextBox.Name = "ValueForParsingTextBox";
             ValueForParsingTextBox.Size = new Size(196, 23);
             ValueForParsingTextBox.TabIndex = 7;
-            
             // 
             // ButtonParsing
             // 
@@ -236,6 +247,100 @@
             IntValueLabel.TabIndex = 5;
             IntValueLabel.Text = "Int value:";
             // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(groupBox4);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new Size(1491, 636);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Classes";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(FindRectangle);
+            groupBox4.Controls.Add(ColorLabel);
+            groupBox4.Controls.Add(WidthLabel);
+            groupBox4.Controls.Add(LenghtLabel);
+            groupBox4.Controls.Add(textBox3);
+            groupBox4.Controls.Add(textBox2);
+            groupBox4.Controls.Add(textBox1);
+            groupBox4.Controls.Add(listBox1);
+            groupBox4.Location = new Point(8, 16);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(308, 284);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Rectangles";
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(0, 22);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(120, 229);
+            listBox1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(135, 40);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(135, 84);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 2;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(135, 128);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(100, 23);
+            textBox3.TabIndex = 3;
+            // 
+            // LenghtLabel
+            // 
+            LenghtLabel.AutoSize = true;
+            LenghtLabel.Location = new Point(135, 22);
+            LenghtLabel.Name = "LenghtLabel";
+            LenghtLabel.Size = new Size(47, 15);
+            LenghtLabel.TabIndex = 4;
+            LenghtLabel.Text = "Lenght:";
+            // 
+            // WidthLabel
+            // 
+            WidthLabel.AutoSize = true;
+            WidthLabel.Location = new Point(135, 66);
+            WidthLabel.Name = "WidthLabel";
+            WidthLabel.Size = new Size(42, 15);
+            WidthLabel.TabIndex = 5;
+            WidthLabel.Text = "Width:";
+            // 
+            // ColorLabel
+            // 
+            ColorLabel.AutoSize = true;
+            ColorLabel.Location = new Point(135, 110);
+            ColorLabel.Name = "ColorLabel";
+            ColorLabel.Size = new Size(39, 15);
+            ColorLabel.TabIndex = 6;
+            ColorLabel.Text = "Color:";
+            // 
+            // FindRectangle
+            // 
+            FindRectangle.Location = new Point(160, 228);
+            FindRectangle.Name = "FindRectangle";
+            FindRectangle.Size = new Size(75, 23);
+            FindRectangle.TabIndex = 7;
+            FindRectangle.Text = "Find";
+            FindRectangle.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -252,6 +357,9 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -275,5 +383,15 @@
         private GroupBox groupBox1;
         private GroupBox groupBox3;
         private GroupBox groupBox2;
+        private TabPage tabPage2;
+        private GroupBox groupBox4;
+        private Label WidthLabel;
+        private Label LenghtLabel;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private ListBox listBox1;
+        private Label ColorLabel;
+        private Button FindRectangle;
     }
 }
