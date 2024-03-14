@@ -28,7 +28,9 @@ namespace Lab1
         private void WeekDayParse(object sender, EventArgs e)
         {
             Weekday weekday;
-            string temp = ValueForParsingTextBox.Text;
+            var temp = ValueForParsingTextBox.Text;
+            int examination;
+            bool isInt;
             if (!(temp == "") && !(temp == " "))
             {
                 if (Enum.TryParse(temp, out weekday))
@@ -39,9 +41,10 @@ namespace Lab1
                 {
                     ParseAnswerLabel.Text = "Некорректно введены данные!";
                 }
-                if (Convert.ToInt32(temp) > 8)
+                isInt = int.TryParse(temp, out examination);
+                if(isInt)
                 {
-                    ParseAnswerLabel.Text = "Такого дня недели не существует.";
+                    ParseAnswerLabel.Text = "Введите название дня текстом.";
                 }
             }
             else
