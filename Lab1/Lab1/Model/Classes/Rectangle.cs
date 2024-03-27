@@ -1,48 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab1.Model.Classes
-{
-     class Rectangle
+﻿    class Rectangle
     {
-        private double _lenght;
-        private double _width;
-        
-        private double ReactangleLenght
+        private int _lenght;
+        private int _width;
+        public Colors ColorOfRectangle { get; set; }
+        public int Lenght
         {
             get { return _lenght; }
             set
             {
-                if (value < 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
                 _lenght = value;
             }
         }
-        private double ReactangWight
+        public int Wight
         {
             get { return _width; }
             set
             {
-                if (value < 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
                 _width = value;
             }
         }
-        private string ColorOfReactangle { get; set; }
+
+
         public Rectangle()
         {
-            ReactangleLenght = 12;
-            ReactangWight = 5;
-            ColorOfReactangle = ColorOfReactangle;
+            Lenght = 4;
+            Wight = 17;
+            ColorOfRectangle = Colors.Yellow;
 
         }
-        public Rectangle(double lenght, double width)
+        public Rectangle(int lenght, int width, Colors color)
         {
-            ReactangleLenght = lenght;
-            ReactangWight = width;
-            ColorOfReactangle = ColorOfReactangle;
+            Lenght = lenght;
+            Wight = width;
+            ColorOfRectangle = color;
 
+        }
+
+        public override string ToString()
+        {
+            return $"w:{Wight}, l:{Lenght}";
         }
     }
-}
+

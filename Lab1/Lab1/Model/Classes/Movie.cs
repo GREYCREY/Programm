@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab1.Model.Classes
-{
-     class Movie
+﻿    class Movie
     {
         private string _name;
         private int _timeInMinutes;
         private int _yearOfIssue;
-        private string _genre;
-        private double _rating;
-        private string MovieName
+        public Genre GenreOfMovie { get; set; }
+        private int _rating;
+        public string Name
         {
             get { return _name; }
             set
@@ -22,61 +14,56 @@ namespace Lab1.Model.Classes
                 _name = value;
             }
         }
-        private int TimeOfMovieInMinutes
+        public int TimeInMinutes
         {
             get { return _timeInMinutes; }
             set
             {
-                if (value == 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
                 _timeInMinutes = value;
             }
         }
-        private int Movie_YearOfIssue
+        public int YearOfIssue
         {
             get { return _yearOfIssue; }
             set
             {
-                if (value < 1900 && value > 2024) throw new ArgumentException();
+                if (value < 1900 || value > 2024) throw new ArgumentException();
                 _yearOfIssue = value;
             }
         }
-        private string MovieGenre
-        {
-            get { return _genre; }
-            set
-            {
-                if (value.Length == 0) throw new ArgumentException();
-                _genre = value;
-            }
-        }
-        private double MovieRaiting
+
+        public int Raiting
         {
             get { return _rating; }
             set
             {
-                if (value < 0 && value > 10) throw new ArgumentException();
+
+                if (value > 10) throw new ArgumentException("Raiting can not be more than 10.");
+                Validator.AssertOnPositiveValue(value);
                 _rating = value;
             }
         }
         public Movie()
         {
-            MovieName = "Dune 2";
-            TimeOfMovieInMinutes = 166;
-            Movie_YearOfIssue = 2024;
-            MovieGenre = "фантастика, боевик, драма, приключения";
-            MovieRaiting  = 8.6;
+            Name = "Dune 2";
+            TimeInMinutes = 166;
+            YearOfIssue = 2024;
+
+            Raiting = 8;
         }
-        public Movie(string name, int timeInMinutes, int yearOfIssue, string genre, double rating)
+        public Movie(string name, int timeInMinutes, int yearOfIssue, Genre genre, int rating)
         {
-            MovieName = name;
-            TimeOfMovieInMinutes = timeInMinutes;
-            Movie_YearOfIssue = _yearOfIssue;
-            MovieGenre = genre;
-            MovieRaiting = rating;
+            Name = name;
+            TimeInMinutes = timeInMinutes;
+            YearOfIssue = yearOfIssue;
+            GenreOfMovie = genre;
+
+            Raiting = rating;
 
         }
 
 
 
     }
-}
+

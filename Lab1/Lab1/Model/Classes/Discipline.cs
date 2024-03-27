@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab1.Model.Classes
-{
-    class Discipline
+﻿    class Discipline
     {
         private string _name;
         private string _type;
         private int _numberOfVisits;
-        private string NameOfDiscipline
+        private string Name
         {
             get { return _name; }
             set
@@ -21,7 +12,7 @@ namespace Lab1.Model.Classes
                 _name = value;
             }
         }
-        private string TypeOfDiscipline
+        private string Type
         {
             get { return _type; }
             set
@@ -30,31 +21,23 @@ namespace Lab1.Model.Classes
                 _type = value;
             }
         }
-        private int NumberOfVisitsToTheDiscipline
+        private int NumberOfVisits
         {
             get { return _numberOfVisits; }
             set
             {
-                if (value < 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
                 _numberOfVisits = value;
             }
         }
         public Discipline(string name, string type, int numberOfVisits)
         {
-            NameOfDiscipline = "Информационные технологии";
-            TypeOfDiscipline = "Профильный";
-            NumberOfVisitsToTheDiscipline = 52;
+            Name = "Информационные технологии";
+            Type = "Профильный";
+            NumberOfVisits = 52;
 
         }
-        public Discipline(string name, string type, int numberOfVisits)
-        {
-            NameOfDiscipline = name;
-            TypeOfDiscipline = type;
-            NumberOfVisitsToTheDiscipline = numberOfVisits;
-
-        }
-
+        
     }
         
-}
 

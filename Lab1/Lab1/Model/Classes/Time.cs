@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lab1.Model.Classes
-{
-     class Time
+class Time
     {
         private int _hours;
         private int _minutes;
@@ -17,7 +10,8 @@ namespace Lab1.Model.Classes
             get { return _hours; }
             set
             {
-                if (value > 23 && value < 0 ) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
+                if (value > 23 ) throw new ArgumentException();
                 _hours = value;
             }
         }
@@ -26,7 +20,8 @@ namespace Lab1.Model.Classes
             get { return _minutes; }
             set
             {
-                if (value > 60 && value < 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
+                if (value > 60 ) throw new ArgumentException();
                 _minutes = value;
             }
         }
@@ -35,7 +30,9 @@ namespace Lab1.Model.Classes
             get { return _seconds; }
             set
             {
-                if (value > 60 && value < 0) throw new ArgumentException();
+                if (value > 60) throw new ArgumentException();
+
+                Validator.AssertOnPositiveValue(value);
                 _seconds = value;
             }
         }
@@ -55,4 +52,4 @@ namespace Lab1.Model.Classes
         }
 
     }
-}
+

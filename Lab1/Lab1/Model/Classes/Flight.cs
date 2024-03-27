@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Lab1.Model.Classes
-{
-     class Flight
+﻿    class Flight
     {
         private string _departurePoint;
         private string _destination;
         private int _flightTimeInMinutes;
-        private string DeparturePoint
+        public string DeparturePoint
         {
             get { return _departurePoint; }
             set
@@ -21,7 +12,7 @@ namespace Lab1.Model.Classes
                 _departurePoint = value;
             }
         }
-        private string Destination
+        public string Destination
         {
             get { return _destination; }
             set
@@ -30,12 +21,12 @@ namespace Lab1.Model.Classes
                 _destination = value;
             }
         }
-        private int FlightTime
+        public int Time
         {
             get { return _flightTimeInMinutes; }
             set
             {
-                if (value < 0) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
                 _flightTimeInMinutes = value;
             }
         }
@@ -43,16 +34,15 @@ namespace Lab1.Model.Classes
         {
             DeparturePoint = "Maiami";
             Destination = "Washington";
-            FlightTime = 190;
+            Time = 190;
 
         }
         public Flight(string departurePoint, string destination, int flightTimeInMinutes)
         {
             DeparturePoint = departurePoint;
             Destination = destination;
-            FlightTime = flightTimeInMinutes;
+            Time = flightTimeInMinutes;
 
         }
     }
-    
-}
+

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab1.Model.Classes
-{
-     class Song
+﻿     class Song
     {
         private string _name;
         private int _releaseYear;
@@ -26,7 +17,8 @@ namespace Lab1.Model.Classes
             get { return _releaseYear; }
             set
             {
-                if(value<1900 && value > 2024) throw new ArgumentException();
+                Validator.AssertOnPositiveValue(value);
+                if (value<1900 && value > 2024) throw new ArgumentException();
                 _releaseYear = value;
             }
         }
@@ -54,4 +46,4 @@ namespace Lab1.Model.Classes
 
         }
     }
-}
+
