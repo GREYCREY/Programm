@@ -4,7 +4,7 @@
         private int _timeInMinutes;
         private int _yearOfIssue;
         public Genre GenreOfMovie { get; set; }
-        private int _rating;
+        private double _rating;
         public string Name
         {
             get { return _name; }
@@ -28,19 +28,19 @@
             get { return _yearOfIssue; }
             set
             {
-                if (value < 1900 || value > 2024) throw new ArgumentException();
+                Validator.AssertValueInRange(value, 1900, 2024);
                 _yearOfIssue = value;
             }
         }
 
-        public int Raiting
+        public double Raiting
         {
             get { return _rating; }
             set
             {
 
                 if (value > 10) throw new ArgumentException("Raiting can not be more than 10.");
-                Validator.AssertOnPositiveValue(value);
+                //Validator.AssertOnPositiveValue(value);
                 _rating = value;
             }
         }
@@ -52,7 +52,7 @@
 
             Raiting = 8;
         }
-        public Movie(string name, int timeInMinutes, int yearOfIssue, Genre genre, int rating)
+        public Movie(string name, int timeInMinutes, int yearOfIssue, Genre genre, double rating)
         {
             Name = name;
             TimeInMinutes = timeInMinutes;

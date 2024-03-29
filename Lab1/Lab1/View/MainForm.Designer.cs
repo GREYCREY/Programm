@@ -61,6 +61,12 @@
             NameLabel = new Label();
             MovieListBox = new ListBox();
             groupBox4 = new GroupBox();
+            labelID = new Label();
+            TextBoxClassesRectangleID = new TextBox();
+            labelY = new Label();
+            labelX = new Label();
+            TextBoxClassesRectangleY = new TextBox();
+            TextBoxClassesRectangleX = new TextBox();
             FindRectangle = new Button();
             ColorLabel = new Label();
             WidthLabel = new Label();
@@ -401,6 +407,12 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(labelID);
+            groupBox4.Controls.Add(TextBoxClassesRectangleID);
+            groupBox4.Controls.Add(labelY);
+            groupBox4.Controls.Add(labelX);
+            groupBox4.Controls.Add(TextBoxClassesRectangleY);
+            groupBox4.Controls.Add(TextBoxClassesRectangleX);
             groupBox4.Controls.Add(FindRectangle);
             groupBox4.Controls.Add(ColorLabel);
             groupBox4.Controls.Add(WidthLabel);
@@ -415,6 +427,58 @@
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Rectangles";
+            // 
+            // labelID
+            // 
+            labelID.AutoSize = true;
+            labelID.Location = new Point(255, 163);
+            labelID.Name = "labelID";
+            labelID.Size = new Size(21, 15);
+            labelID.TabIndex = 13;
+            labelID.Text = "ID:";
+            // 
+            // TextBoxClassesRectangleID
+            // 
+            TextBoxClassesRectangleID.Location = new Point(253, 181);
+            TextBoxClassesRectangleID.Name = "TextBoxClassesRectangleID";
+            TextBoxClassesRectangleID.ReadOnly = true;
+            TextBoxClassesRectangleID.Size = new Size(40, 23);
+            TextBoxClassesRectangleID.TabIndex = 12;
+            // 
+            // labelY
+            // 
+            labelY.AutoSize = true;
+            labelY.Location = new Point(197, 163);
+            labelY.Name = "labelY";
+            labelY.Size = new Size(17, 15);
+            labelY.TabIndex = 11;
+            labelY.Text = "Y:";
+            // 
+            // labelX
+            // 
+            labelX.AutoSize = true;
+            labelX.Location = new Point(135, 163);
+            labelX.Name = "labelX";
+            labelX.Size = new Size(17, 15);
+            labelX.TabIndex = 10;
+            labelX.Text = "X:";
+            // 
+            // TextBoxClassesRectangleY
+            // 
+            TextBoxClassesRectangleY.Location = new Point(195, 181);
+            TextBoxClassesRectangleY.Name = "TextBoxClassesRectangleY";
+            TextBoxClassesRectangleY.ReadOnly = true;
+            TextBoxClassesRectangleY.Size = new Size(40, 23);
+            TextBoxClassesRectangleY.TabIndex = 9;
+            TextBoxClassesRectangleY.TextChanged += TextBoxClassesRectangleY_TextChanged;
+            // 
+            // TextBoxClassesRectangleX
+            // 
+            TextBoxClassesRectangleX.Location = new Point(135, 181);
+            TextBoxClassesRectangleX.Name = "TextBoxClassesRectangleX";
+            TextBoxClassesRectangleX.ReadOnly = true;
+            TextBoxClassesRectangleX.Size = new Size(40, 23);
+            TextBoxClassesRectangleX.TabIndex = 8;
             // 
             // FindRectangle
             // 
@@ -554,5 +618,11 @@
         private TextBox TextBoxClassesMovieYearOfIssue;
         private TextBox TextBoxClassesMovieTime;
         private TextBox TextBoxClassesMovieName;
+        private TextBox TextBoxClassesRectangleX;
+        private Label labelY;
+        private Label labelX;
+        private TextBox TextBoxClassesRectangleY;
+        private TextBox TextBoxClassesRectangleID;
+        private Label labelID;
     }
 }

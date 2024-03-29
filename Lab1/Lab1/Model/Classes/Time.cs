@@ -10,8 +10,8 @@ class Time
             get { return _hours; }
             set
             {
-                Validator.AssertOnPositiveValue(value);
-                if (value > 23 ) throw new ArgumentException();
+               
+                Validator.AssertValueInRange(value, 0, 23);
                 _hours = value;
             }
         }
@@ -20,8 +20,8 @@ class Time
             get { return _minutes; }
             set
             {
-                Validator.AssertOnPositiveValue(value);
-                if (value > 60 ) throw new ArgumentException();
+                
+                Validator.AssertValueInRange(value, 0, 60);
                 _minutes = value;
             }
         }
@@ -30,9 +30,7 @@ class Time
             get { return _seconds; }
             set
             {
-                if (value > 60) throw new ArgumentException();
-
-                Validator.AssertOnPositiveValue(value);
+                Validator.AssertValueInRange(value,0 , 60);
                 _seconds = value;
             }
         }

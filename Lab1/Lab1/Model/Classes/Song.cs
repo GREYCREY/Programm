@@ -18,7 +18,7 @@
             set
             {
                 Validator.AssertOnPositiveValue(value);
-                if (value<1900 && value > 2024) throw new ArgumentException();
+                Validator.AssertValueInRange(value, 1900, 2024);
                 _releaseYear = value;
             }
         }

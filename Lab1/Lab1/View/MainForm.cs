@@ -18,13 +18,14 @@ namespace Lab1
             string[] movieTitles = new string[5] { "Dune", "Dune2", "Oppenhaimer", "Barbie", "Terminator" };
             for (int i = 0; i < 5; i++)
             {
-                Rectangle rectangle = new Rectangle(random.Next(0, 20), random.Next(0, 20), Colors.Red);
+                Rectangle rectangle = new Rectangle(Math.Round(random.NextDouble() * 10.0, 1), Math.Round(random.NextDouble() * 10.0, 1), Colors.Red,
+                0, 0);
                 _rectangles[i] = rectangle;
             }
             RectangleListBox.Items.AddRange(_rectangles);
             for (int i = 0; i < 5; i++)
             {
-                Movie movie = new Movie(movieTitles[i], random.Next(60, 300), random.Next(1900, 2025), Genre.Horror, random.Next(1, 10));
+                Movie movie = new Movie(movieTitles[i], random.Next(60, 300), random.Next(1900, 2025), Genre.Horror, Math.Round(random.NextDouble() * 10, 1));
                 _movie[i] = movie;
             }
             MovieListBox.Items.AddRange(_movie);
@@ -63,7 +64,7 @@ namespace Lab1
         private Rectangle FindRectangleWithMaxWidth()
         {
             Rectangle rectangle = _rectangles[0];
-            int MaxWidth = _rectangles[0].Wight;
+            double MaxWidth = _rectangles[0].Wight;
             foreach (Rectangle r in _rectangles)
             {
                 if (r.Wight > MaxWidth)
@@ -78,7 +79,7 @@ namespace Lab1
         private Movie FindMovieWithMaxRating()
         {
             Movie movie = _movie[0];
-            int MaxRating = _movie[0].Raiting;
+            double MaxRating = _movie[0].Raiting;
             foreach (Movie m in _movie)
             {
                 if (m.Raiting > MaxRating)
@@ -165,6 +166,11 @@ namespace Lab1
             TextBoxClassesRectangleWidth.Text = _currentRectangle.Wight.ToString();
             TextBoxClassesRectangleLenght.Text = _currentRectangle.Lenght.ToString();
             TextBoxClassesRectangleColor.Text = _currentRectangle.ColorOfRectangle.ToString();
+            TextBoxClassesRectangleX.Text = _currentRectangle.CenterOfRectangle.X.ToString();
+            TextBoxClassesRectangleY.Text = _currentRectangle.CenterOfRectangle.Y.ToString();
+            TextBoxClassesRectangleID.Text = _currentRectangle.ID.ToString();
+
+
 
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -202,7 +208,7 @@ namespace Lab1
             try
             {
                 TextBoxClassesRectangleWidth.BackColor = System.Drawing.Color.White;
-                int wight = int.Parse(TextBoxClassesRectangleWidth.Text);
+                double wight = double.Parse(TextBoxClassesRectangleWidth.Text);
                 _currentRectangle.Wight = wight;
             }
             catch
@@ -217,7 +223,7 @@ namespace Lab1
             try
             {
                 TextBoxClassesRectangleLenght.BackColor = System.Drawing.Color.White;
-                int lenght = int.Parse(TextBoxClassesRectangleLenght.Text);
+                double lenght = double.Parse(TextBoxClassesRectangleLenght.Text);
                 _currentRectangle.Wight = lenght;
             }
             catch
@@ -308,7 +314,7 @@ namespace Lab1
             try
             {
                 TextBoxClassesMovieRating.BackColor = System.Drawing.Color.White;
-                int Rating = int.Parse(TextBoxClassesMovieRating.Text);
+                double Rating = double.Parse(TextBoxClassesMovieRating.Text);
                 _currentMovie.Raiting = Rating;
             }
             catch (Exception)
@@ -321,6 +327,11 @@ namespace Lab1
         {
             Movie movie = FindMovieWithMaxRating();
             MovieListBox.SelectedItem = movie;
+
+        }
+
+        private void TextBoxClassesRectangleY_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

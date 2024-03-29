@@ -9,7 +9,7 @@ class Contacts
     private string _phoneNumber;
     private string AssertStringContainsOnlyLetters(string value)
     {
-        bool answer = false;
+        
         if (!Regex.IsMatch(value, "[a-zA-Z0-9 ]*"))
         {
             return value;
