@@ -334,5 +334,10 @@ namespace Lab1
         {
 
         }
+
+        private void labelOfXRectangle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
