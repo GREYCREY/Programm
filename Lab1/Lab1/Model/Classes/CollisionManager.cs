@@ -6,22 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 internal class CollisionManager
 {
-    bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
+    public static bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
     {
-        if (Math.Abs(rectangle1.CenterOfRectangle.X - rectangle2.CenterOfRectangle.X) < Math.Abs(rectangle1.Wight - rectangle2.Wight))
-        {
-        return true;
-        }
-        if (Math.Abs(rectangle1.CenterOfRectangle.Y - rectangle2.CenterOfRectangle.Y) < Math.Abs(rectangle1.Lenght - rectangle2.Lenght))
-        { 
-        return true;
-        }
-        else
-        {
-        return false;
-        }
+        Point2D region = new Point2D
+             (Math.Abs(rectangle2.CenterOfRectangle.X - rectangle1.CenterOfRectangle.X),
+             Math.Abs(rectangle2.CenterOfRectangle.Y - rectangle1.CenterOfRectangle.Y));
+        Point2D rectangle1mid = new Point2D(rectangle1.Wight / 2, rectangle1.Lenght / 2);
+        Point2D rectangle2mid = new Point2D(rectangle2.Wight / 2, rectangle2.Lenght / 2);
+        Point2D minRegion = rectangle1mid + rectangle2mid;
+        return region.X < minRegion.X && region.Y < minRegion.Y;
+
     }
-    bool IsCollision(Ring ring1, Ring ring2)
+    public static bool IsCollision(Ring ring1, Ring ring2)
     {
         if(Math.Abs(Math.Pow(ring1.CenterOfRing.X,2) - Math.Pow(ring2.CenterOfRing.X, 2)) + 
            Math.Abs(Math.Pow(ring1.CenterOfRing.Y, 2) - Math.Pow(ring2.CenterOfRing.Y, 2)) < (ring1.InnerRadius + ring2.InnerRadius))
@@ -33,4 +29,6 @@ internal class CollisionManager
             return false;
         }
     }
+    
+    
 }

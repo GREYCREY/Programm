@@ -77,6 +77,7 @@
             TextBoxClassesRectangleLenght = new TextBox();
             RectangleListBox = new ListBox();
             tabPage3 = new TabPage();
+            ListBoxOfRectangles = new ListBox();
             panelOfRectangles = new Panel();
             textBoxOfLenghtRectangle = new TextBox();
             textBoxOfWidthRectangle = new TextBox();
@@ -91,7 +92,6 @@
             labelOfSelectedRectangle = new Label();
             RemoveRectanlgeButton = new Button();
             AddRectangleButton = new Button();
-            groupBox6 = new GroupBox();
             LabelOfRectangles = new Label();
             tabPage1.SuspendLayout();
             EnumsTabs.SuspendLayout();
@@ -573,6 +573,7 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(ListBoxOfRectangles);
             tabPage3.Controls.Add(panelOfRectangles);
             tabPage3.Controls.Add(textBoxOfLenghtRectangle);
             tabPage3.Controls.Add(textBoxOfWidthRectangle);
@@ -587,7 +588,6 @@
             tabPage3.Controls.Add(labelOfSelectedRectangle);
             tabPage3.Controls.Add(RemoveRectanlgeButton);
             tabPage3.Controls.Add(AddRectangleButton);
-            tabPage3.Controls.Add(groupBox6);
             tabPage3.Controls.Add(LabelOfRectangles);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
@@ -596,6 +596,16 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Rectangles";
             tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // ListBoxOfRectangles
+            // 
+            ListBoxOfRectangles.FormattingEnabled = true;
+            ListBoxOfRectangles.ItemHeight = 15;
+            ListBoxOfRectangles.Location = new Point(6, 42);
+            ListBoxOfRectangles.Name = "ListBoxOfRectangles";
+            ListBoxOfRectangles.Size = new Size(223, 109);
+            ListBoxOfRectangles.TabIndex = 16;
+            ListBoxOfRectangles.SelectedIndexChanged += ListBoxOfRectangles_SelectedIndexChanged;
             // 
             // panelOfRectangles
             // 
@@ -611,6 +621,7 @@
             textBoxOfLenghtRectangle.Name = "textBoxOfLenghtRectangle";
             textBoxOfLenghtRectangle.Size = new Size(100, 23);
             textBoxOfLenghtRectangle.TabIndex = 14;
+            textBoxOfLenghtRectangle.TextChanged += textBoxOfLenghtRectangle_TextChanged;
             // 
             // textBoxOfWidthRectangle
             // 
@@ -618,6 +629,7 @@
             textBoxOfWidthRectangle.Name = "textBoxOfWidthRectangle";
             textBoxOfWidthRectangle.Size = new Size(100, 23);
             textBoxOfWidthRectangle.TabIndex = 13;
+            textBoxOfWidthRectangle.TextChanged += textBoxOfWidthRectangle_TextChanged;
             // 
             // textBoxOfYRectangle
             // 
@@ -625,6 +637,7 @@
             textBoxOfYRectangle.Name = "textBoxOfYRectangle";
             textBoxOfYRectangle.Size = new Size(100, 23);
             textBoxOfYRectangle.TabIndex = 12;
+            textBoxOfYRectangle.TextChanged += textBoxOfYRectangle_TextChanged;
             // 
             // textBoxOfXRectangle
             // 
@@ -632,6 +645,7 @@
             textBoxOfXRectangle.Name = "textBoxOfXRectangle";
             textBoxOfXRectangle.Size = new Size(100, 23);
             textBoxOfXRectangle.TabIndex = 11;
+            textBoxOfXRectangle.TextChanged += textBoxOfXRectangle_TextChanged;
             // 
             // textBoxlOfIDRectangle
             // 
@@ -704,6 +718,7 @@
             RemoveRectanlgeButton.Size = new Size(32, 33);
             RemoveRectanlgeButton.TabIndex = 3;
             RemoveRectanlgeButton.UseVisualStyleBackColor = true;
+            RemoveRectanlgeButton.Click += RemoveRectanlgeButton_Click;
             // 
             // AddRectangleButton
             // 
@@ -714,14 +729,7 @@
             AddRectangleButton.Size = new Size(32, 33);
             AddRectangleButton.TabIndex = 2;
             AddRectangleButton.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            groupBox6.Location = new Point(8, 42);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(281, 115);
-            groupBox6.TabIndex = 1;
-            groupBox6.TabStop = false;
+            AddRectangleButton.Click += AddRectangleButton_Click;
             // 
             // LabelOfRectangles
             // 
@@ -809,7 +817,6 @@
         private Label labelID;
         private TabPage tabPage3;
         private Label LabelOfRectangles;
-        private GroupBox groupBox6;
         private Button AddRectangleButton;
         private Button RemoveRectanlgeButton;
         private Label labelOfLenghtRectangle;
@@ -824,5 +831,6 @@
         private TextBox textBoxOfWidthRectangle;
         private TextBox textBoxOfYRectangle;
         private Panel panelOfRectangles;
+        private ListBox ListBoxOfRectangles;
     }
 }

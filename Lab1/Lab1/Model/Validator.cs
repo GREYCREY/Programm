@@ -26,7 +26,7 @@
     }
     public static int AssertValueInRange(int value, int min, int max)
     {
-        if (min < value && value < max)
+        if (min <= value && value <= max)
         {
             return value;
         }
@@ -39,13 +39,13 @@
     }
     public static double AssertValueInRange(double value, double min, double max)
     {
-        if (min < value && value < max)
+        if (min <= value && value <= max)
         {
             return value;
         }
         else
         {
-            throw new ArgumentException($"{value} is not correct!");
+            throw new ArgumentException($"{value} is not correct! {nameof(value)}");
         }
 
 

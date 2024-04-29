@@ -1,6 +1,6 @@
 ﻿using System.CodeDom.Compiler;
 
-class Rectangle
+    public class Rectangle
     {
         private double _lenght;
         private double _width;
