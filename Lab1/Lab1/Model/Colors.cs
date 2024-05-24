@@ -1,5 +1,8 @@
 ﻿
-    public enum Colors
+/// <summary>
+/// Перечисление, представляющее цвета.
+/// </summary>    
+public enum Colors
     {
         White,
         Black,

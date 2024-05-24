@@ -4,8 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/// <summary>
+/// Класс, управляющий пересечениями объектов.
+/// </summary>
 internal class CollisionManager
 {
+    /// <summary>
+    /// Проверяет столкновение двух прямоугольников.
+    /// </summary>
+    /// <param name="rectangle1">Первый прямоугольник.</param>
+    /// <param name="rectangle2">Второй прямоугольник.</param>
+    /// <returns>Возвращает true, если прямоугольники сталкиваются; в противном случае false.</returns>
     public static bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
     {
         Point2D region = new Point2D
@@ -17,6 +26,12 @@ internal class CollisionManager
         return region.X < minRegion.X && region.Y < minRegion.Y;
 
     }
+    /// <summary>
+    /// Проверяет столкновение двух колец.
+    /// </summary>
+    /// <param name="ring1">Первое кольцо.</param>
+    /// <param name="ring2">Второе кольцо.</param>
+    /// <returns>Возвращает true, если кольца сталкиваются; в противном случае false.</returns>
     public static bool IsCollision(Ring ring1, Ring ring2)
     {
         if(Math.Abs(Math.Pow(ring1.CenterOfRing.X,2) - Math.Pow(ring2.CenterOfRing.X, 2)) + 

@@ -1,6 +1,13 @@
 ﻿
     public class СreatingRectangle
     {
+        /// <summary>
+        /// Метод для создания массива прямоугольников со случайными параметрами.
+        /// </summary>
+        /// <param name="size">Количество прямоугольников в массиве.</param>
+        /// <param name="width">Ширина прямоугольной области, в пределах которой генерируются точки центра прямоугольников.</param>
+        /// <param name="height">Высота прямоугольной области, в пределах которой генерируются точки центра прямоугольников.</param>
+        /// <returns>Массив случайных прямоугольников.</returns>
         public static Rectangle[] Randomize(int size, int width, int height)
         {
             Rectangle[] rectangles = new Rectangle[size];

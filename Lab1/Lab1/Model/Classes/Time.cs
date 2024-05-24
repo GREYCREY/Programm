@@ -5,6 +5,9 @@ class Time
         private int _hours;
         private int _minutes;
         private int _seconds;
+        /// <summary>
+        /// Возвращает или устанавливает часы.
+        /// </summary>
         public int  Hours 
         {
             get { return _hours; }
@@ -15,6 +18,9 @@ class Time
                 _hours = value;
             }
         }
+        /// <summary>
+        /// Возвращает или устанавливает минуты.
+        /// </summary>
         public int Minutes
         {
             get { return _minutes; }
@@ -25,6 +31,9 @@ class Time
                 _minutes = value;
             }
         }
+        /// <summary>
+        /// Возвращает или устанавливает секунды.
+        /// </summary>
         public int Seconds
         {
             get { return _seconds; }
@@ -34,6 +43,9 @@ class Time
                 _seconds = value;
             }
         }
+        /// <summary>
+        /// Инициализирует новый объект Time с значениями по умолчанию.
+        /// </summary>
         public Time()
         {
             Hours = 4;
@@ -41,6 +53,12 @@ class Time
             Seconds = 38;
 
         }
+        /// <summary>
+        /// Инициализирует новый объект Time с указанными часами, минутами и секундами.
+        /// </summary>
+        /// <param name="hours">Часы.</param>
+        /// <param name="minutes">Минуты.</param>
+        /// <param name="seconds">Секунды.</param>
         public Time(int hours, int minutes, int seconds)
         {
             Hours = hours;

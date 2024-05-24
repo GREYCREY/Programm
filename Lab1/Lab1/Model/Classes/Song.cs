@@ -1,8 +1,14 @@
-﻿     class Song
-    {
+﻿/// <summary>
+/// Представляет класс песни.
+/// </summary>  
+class Song
+     {
         private string _name;
         private int _releaseYear;
         private string _album;
+        /// <summary>
+        /// Возвращает или задает название песни.
+        /// </summary>
         private string SongName
         {
             get { return _name; }
@@ -12,6 +18,9 @@
                 _name = value;
             }
         }
+        /// <summary>
+        /// Возвращает или задает год выпуска песни.
+        /// </summary>
         private int ReleaseYear
         {
             get { return _releaseYear; }
@@ -22,6 +31,9 @@
                 _releaseYear = value;
             }
         }
+        /// <summary>
+        /// Возвращает или задает название альбома, в котором содержится песня.
+        /// </summary>
         private string Album
         {
             get { return _album; }
@@ -31,6 +43,9 @@
                 _album = value;
             }
         }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Song со значениями по умолчанию.
+        /// </summary>
         public Song()
         {
             SongName = "running shoes";
@@ -38,6 +53,12 @@
             Album = "eve";
 
         }
+        /// <summary>
+        /// Инициализирует новый экземпляр класса Song с указанными значениями.
+        /// </summary>
+        /// <param name="name">Название песни</param>
+        /// <param name="releaseYear">Год выпуска песни</param>
+        /// <param name="album">Название альбома</param>
         public Song(string name, int releaseYear, string album)
         {
             SongName = name;
@@ -45,5 +66,5 @@
             Album = album;
 
         }
-    }
+     }
 

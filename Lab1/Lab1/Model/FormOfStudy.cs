@@ -1,5 +1,8 @@
 ﻿
-    public enum FormOfStudy
+/// <summary>
+/// Перечисление, представляющее формы обучения.
+/// </summary>    
+public enum FormOfStudy
     {
         FullTime,
         Extramural,
