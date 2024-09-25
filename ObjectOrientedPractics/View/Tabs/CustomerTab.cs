@@ -10,14 +10,35 @@ using System.Windows.Forms;
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Вкладка управления клиентами в интерфейсе приложения.
+    /// </summary>
     public partial class CustomerTab : UserControl
     {
+        /// <summary>
+        /// Конструктор по умолчанию, инициализирует компоненты вкладки.
+        /// </summary>
         public CustomerTab()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Список клиентов.
+        /// </summary>
         private static List<Customer> _customer = new List<Customer>();
+
+        /// <summary>
+        /// Текущий выбранный клиент.
+        /// </summary>
         private static Customer _currentCustomer = null;
+
+        /// <summary>
+        /// Обработчик события изменения выбранного клиента в списке.
+        /// Обновляет данные клиента при выборе нового элемента в списке.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void CustomerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CustomerListBox.SelectedIndex < 0)
@@ -26,7 +47,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerAddressRichTextBox.Text = string.Empty;
                 CustomerIDTextBox.Text = string.Empty;
             }
-
             else
             {
                 _currentCustomer = _customer[CustomerListBox.SelectedIndex];
@@ -35,6 +55,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerIDTextBox.Text = _currentCustomer.Id.ToString();
             }
         }
+
+        /// <summary>
+        /// Обработчик события изменения текста в поле полного имени клиента.
+        /// Пытается обновить полное имя клиента, меняя цвет фона поля в случае ошибки.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void CustomerFullNameRichTextBox_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CustomerFullNameRichTextBox.Text)) return;
@@ -49,6 +76,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerFullNameRichTextBox.BackColor = Color.LightPink;
             }
         }
+
+        /// <summary>
+        /// Обработчик события изменения текста в поле адреса клиента.
+        /// Пытается обновить адрес клиента, меняя цвет фона поля в случае ошибки.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void CustomerAddressRichTextBox_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CustomerAddressRichTextBox.Text)) return;
@@ -63,6 +97,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerAddressRichTextBox.BackColor = Color.LightPink;
             }
         }
+
+        /// <summary>
+        /// Обработчик события удаления выбранного клиента.
+        /// Удаляет клиента из списка и обновляет интерфейс.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void DeleteItem_Click(object sender, EventArgs e)
         {
             if (CustomerListBox.SelectedIndex < 0) { return; }
@@ -72,13 +113,18 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomerListBox.Items.RemoveAt(CustomerListBox.SelectedIndex);
             }
         }
+
+        /// <summary>
+        /// Обработчик события добавления нового клиента.
+        /// Добавляет нового клиента в список и обновляет интерфейс.
+        /// </summary>
+        /// <param name="sender">Источник события.</param>
+        /// <param name="e">Аргументы события.</param>
         private void AddItem_Click(object sender, EventArgs e)
         {
-            Customer newCustomer = new Customer("Alex", "London");
+            Customer newCustomer = new Customer("London", "Alex");
             _customer.Add(newCustomer);
             CustomerListBox.Items.Add(newCustomer);
         }
-
-        
     }
 }

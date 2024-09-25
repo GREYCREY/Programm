@@ -47,6 +47,7 @@
             // 
             // ItemsListBox
             // 
+            ItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             ItemsListBox.FormattingEnabled = true;
             ItemsListBox.ItemHeight = 15;
             ItemsListBox.Location = new Point(6, 22);
@@ -57,6 +58,7 @@
             // 
             // AddButton
             // 
+            AddButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AddButton.Location = new Point(6, 497);
             AddButton.Name = "AddButton";
             AddButton.Size = new Size(130, 50);
@@ -67,6 +69,7 @@
             // 
             // DeleteButton
             // 
+            DeleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             DeleteButton.Location = new Point(208, 497);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new Size(130, 50);
@@ -77,6 +80,7 @@
             // 
             // ItemsGroupBox
             // 
+            ItemsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Controls.Add(DeleteButton);
             ItemsGroupBox.Controls.Add(AddButton);
@@ -89,6 +93,7 @@
             // 
             // SelectedItemGroupBox
             // 
+            SelectedItemGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SelectedItemGroupBox.Controls.Add(DescriptionSelectedItemRichTextBox);
             SelectedItemGroupBox.Controls.Add(descriptionSelectedItemLable);
             SelectedItemGroupBox.Controls.Add(NameSelectedItemRichTextBox);
@@ -106,6 +111,7 @@
             // 
             // DescriptionSelectedItemRichTextBox
             // 
+            DescriptionSelectedItemRichTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             DescriptionSelectedItemRichTextBox.Location = new Point(6, 259);
             DescriptionSelectedItemRichTextBox.Name = "DescriptionSelectedItemRichTextBox";
             DescriptionSelectedItemRichTextBox.Size = new Size(455, 96);
@@ -124,6 +130,7 @@
             // 
             // NameSelectedItemRichTextBox
             // 
+            NameSelectedItemRichTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NameSelectedItemRichTextBox.Location = new Point(6, 133);
             NameSelectedItemRichTextBox.Name = "NameSelectedItemRichTextBox";
             NameSelectedItemRichTextBox.Size = new Size(455, 96);
@@ -142,6 +149,7 @@
             // 
             // CostSelectedItemTextBox
             // 
+            CostSelectedItemTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             CostSelectedItemTextBox.Location = new Point(49, 68);
             CostSelectedItemTextBox.Name = "CostSelectedItemTextBox";
             CostSelectedItemTextBox.Size = new Size(100, 23);
