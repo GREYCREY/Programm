@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             ItemsListBox = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
+            AddButton = new Button();
+            DeleteButton = new Button();
             ItemsGroupBox = new GroupBox();
             SelectedItemGroupBox = new GroupBox();
-            descriptionSelectedItemRichTextBox = new RichTextBox();
+            DescriptionSelectedItemRichTextBox = new RichTextBox();
             descriptionSelectedItemLable = new Label();
-            nameSelectedItemRichTextBox = new RichTextBox();
+            NameSelectedItemRichTextBox = new RichTextBox();
             NameSelectedItemLable = new Label();
-            costSelectedItemTextBox = new TextBox();
+            CostSelectedItemTextBox = new TextBox();
             CostSelectedItemLabel = new Label();
             IDSelectedItemLabel = new Label();
             IDSelectedItemTextBox = new TextBox();
@@ -53,30 +53,33 @@
             ItemsListBox.Name = "ItemsListBox";
             ItemsListBox.Size = new Size(332, 469);
             ItemsListBox.TabIndex = 0;
+            ItemsListBox.SelectedIndexChanged += ItemListListBox_SelectedIndexChanged;
             // 
-            // button1
+            // AddButton
             // 
-            button1.Location = new Point(6, 497);
-            button1.Name = "button1";
-            button1.Size = new Size(130, 50);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            AddButton.Location = new Point(6, 497);
+            AddButton.Name = "AddButton";
+            AddButton.Size = new Size(130, 50);
+            AddButton.TabIndex = 1;
+            AddButton.Text = "Add";
+            AddButton.UseVisualStyleBackColor = true;
+            AddButton.Click += AddItem_Click;
             // 
-            // button2
+            // DeleteButton
             // 
-            button2.Location = new Point(208, 497);
-            button2.Name = "button2";
-            button2.Size = new Size(130, 50);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            DeleteButton.Location = new Point(208, 497);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(130, 50);
+            DeleteButton.TabIndex = 2;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += DeleteItem_Click;
             // 
             // ItemsGroupBox
             // 
             ItemsGroupBox.Controls.Add(ItemsListBox);
-            ItemsGroupBox.Controls.Add(button2);
-            ItemsGroupBox.Controls.Add(button1);
+            ItemsGroupBox.Controls.Add(DeleteButton);
+            ItemsGroupBox.Controls.Add(AddButton);
             ItemsGroupBox.Location = new Point(0, 3);
             ItemsGroupBox.Name = "ItemsGroupBox";
             ItemsGroupBox.Size = new Size(344, 553);
@@ -86,11 +89,11 @@
             // 
             // SelectedItemGroupBox
             // 
-            SelectedItemGroupBox.Controls.Add(descriptionSelectedItemRichTextBox);
+            SelectedItemGroupBox.Controls.Add(DescriptionSelectedItemRichTextBox);
             SelectedItemGroupBox.Controls.Add(descriptionSelectedItemLable);
-            SelectedItemGroupBox.Controls.Add(nameSelectedItemRichTextBox);
+            SelectedItemGroupBox.Controls.Add(NameSelectedItemRichTextBox);
             SelectedItemGroupBox.Controls.Add(NameSelectedItemLable);
-            SelectedItemGroupBox.Controls.Add(costSelectedItemTextBox);
+            SelectedItemGroupBox.Controls.Add(CostSelectedItemTextBox);
             SelectedItemGroupBox.Controls.Add(CostSelectedItemLabel);
             SelectedItemGroupBox.Controls.Add(IDSelectedItemLabel);
             SelectedItemGroupBox.Controls.Add(IDSelectedItemTextBox);
@@ -101,13 +104,14 @@
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
             // 
-            // descriptionSelectedItemRichTextBox
+            // DescriptionSelectedItemRichTextBox
             // 
-            descriptionSelectedItemRichTextBox.Location = new Point(6, 259);
-            descriptionSelectedItemRichTextBox.Name = "descriptionSelectedItemRichTextBox";
-            descriptionSelectedItemRichTextBox.Size = new Size(455, 96);
-            descriptionSelectedItemRichTextBox.TabIndex = 7;
-            descriptionSelectedItemRichTextBox.Text = "";
+            DescriptionSelectedItemRichTextBox.Location = new Point(6, 259);
+            DescriptionSelectedItemRichTextBox.Name = "DescriptionSelectedItemRichTextBox";
+            DescriptionSelectedItemRichTextBox.Size = new Size(455, 96);
+            DescriptionSelectedItemRichTextBox.TabIndex = 7;
+            DescriptionSelectedItemRichTextBox.Text = "";
+            DescriptionSelectedItemRichTextBox.TextChanged += ItemDescriptoinRichTextBox_TextChanged;
             // 
             // descriptionSelectedItemLable
             // 
@@ -118,13 +122,14 @@
             descriptionSelectedItemLable.TabIndex = 6;
             descriptionSelectedItemLable.Text = "Description:";
             // 
-            // nameSelectedItemRichTextBox
+            // NameSelectedItemRichTextBox
             // 
-            nameSelectedItemRichTextBox.Location = new Point(6, 133);
-            nameSelectedItemRichTextBox.Name = "nameSelectedItemRichTextBox";
-            nameSelectedItemRichTextBox.Size = new Size(455, 96);
-            nameSelectedItemRichTextBox.TabIndex = 5;
-            nameSelectedItemRichTextBox.Text = "";
+            NameSelectedItemRichTextBox.Location = new Point(6, 133);
+            NameSelectedItemRichTextBox.Name = "NameSelectedItemRichTextBox";
+            NameSelectedItemRichTextBox.Size = new Size(455, 96);
+            NameSelectedItemRichTextBox.TabIndex = 5;
+            NameSelectedItemRichTextBox.Text = "";
+            NameSelectedItemRichTextBox.TextChanged += ItemNameRichTextBox_TextChanged;
             // 
             // NameSelectedItemLable
             // 
@@ -135,12 +140,13 @@
             NameSelectedItemLable.TabIndex = 4;
             NameSelectedItemLable.Text = "Name:";
             // 
-            // costSelectedItemTextBox
+            // CostSelectedItemTextBox
             // 
-            costSelectedItemTextBox.Location = new Point(49, 68);
-            costSelectedItemTextBox.Name = "costSelectedItemTextBox";
-            costSelectedItemTextBox.Size = new Size(100, 23);
-            costSelectedItemTextBox.TabIndex = 3;
+            CostSelectedItemTextBox.Location = new Point(49, 68);
+            CostSelectedItemTextBox.Name = "CostSelectedItemTextBox";
+            CostSelectedItemTextBox.Size = new Size(100, 23);
+            CostSelectedItemTextBox.TabIndex = 3;
+            CostSelectedItemTextBox.TextChanged += ItemCostTextBox_TextChanged;
             // 
             // CostSelectedItemLabel
             // 
@@ -164,6 +170,7 @@
             // 
             IDSelectedItemTextBox.Location = new Point(49, 31);
             IDSelectedItemTextBox.Name = "IDSelectedItemTextBox";
+            IDSelectedItemTextBox.ReadOnly = true;
             IDSelectedItemTextBox.Size = new Size(100, 23);
             IDSelectedItemTextBox.TabIndex = 0;
             // 
@@ -175,6 +182,7 @@
             Controls.Add(ItemsGroupBox);
             Name = "ItemsTab";
             Size = new Size(814, 556);
+            Load += ItemsTab_Load;
             ItemsGroupBox.ResumeLayout(false);
             SelectedItemGroupBox.ResumeLayout(false);
             SelectedItemGroupBox.PerformLayout();
@@ -184,17 +192,17 @@
         #endregion
 
         private ListBox ItemsListBox;
-        private Button button1;
-        private Button button2;
+        private Button AddButton;
+        private Button DeleteButton;
         private GroupBox ItemsGroupBox;
         private GroupBox SelectedItemGroupBox;
-        private TextBox costSelectedItemTextBox;
+        private TextBox CostSelectedItemTextBox;
         private Label CostSelectedItemLabel;
         private Label IDSelectedItemLabel;
         private TextBox IDSelectedItemTextBox;
-        private RichTextBox nameSelectedItemRichTextBox;
+        private RichTextBox NameSelectedItemRichTextBox;
         private Label NameSelectedItemLable;
-        private RichTextBox descriptionSelectedItemRichTextBox;
+        private RichTextBox DescriptionSelectedItemRichTextBox;
         private Label descriptionSelectedItemLable;
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ObjectOrientedPractics.Services
-{
-    internal class ValueValidator
+﻿    class ValueValidator
     {
         public static string LengthValidator(int minLength, int maxLength, string value)
         {
@@ -19,4 +11,4 @@ namespace ObjectOrientedPractics.Services
             else { throw new ArgumentException(nameof(value)); }
         }
     }
-}
+

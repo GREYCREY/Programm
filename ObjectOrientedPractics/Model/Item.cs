@@ -1,42 +1,104 @@
-﻿using ObjectOrientedPractics.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿class Item
+{
+    /// <summary> 
+    /// Хранит в себе порядковые номера товаров. 
+    /// </summary> 
+    private static int _allItemsCount;
 
-    internal class Item
+    /// <summary> 
+    /// Хранит в себе уникальный порядковый номер.  
+    /// </summary> 
+    readonly int _id;
+
+    /// <summary> 
+    /// Хранит в себе название товара. 
+    /// </summary> 
+    private string _name;
+
+    /// <summary> 
+    /// Хранит в себе информацию о товаре. 
+    /// </summary> 
+    private string _info;
+
+    /// <summary> 
+    /// Хранит в себе цену товара. 
+    /// </summary> 
+    private double _cost;
+
+    /// <summary> 
+    /// Возращает уникальный номер товара. 
+    /// </summary> 
+    public int Id { get { return _id; } }
+
+    /// <summary> 
+    /// Возращает и задает название товара. 
+    /// Задает через проверку при помощи класса <see cref="ValueValidator"/>. Значение должно быть не более 200. 
+    /// </summary> 
+    public string Name
     {
-        readonly  int id = 0;
-        private string _name;
-        private string _info;
-        private double _cost;
-        
-
-        public int ID => id; 
-        
-        public string Name
+        get { return _name; }
+        set
         {
-            get { return _name; }
-            set { ValueValidator.LengthValidator(0, 200, value); _name = value; }
+            ValueValidator.LengthValidator(0, 200, value);
+            _name = value;
         }
-        public string Info
-        {
-            get { return _info; }
-            set { ValueValidator.LengthValidator(0, 1000, value); _info = value; }
-        }
-        public double Cost
-        {
-            get { return _cost; }
-            set { ValueValidator.CostValidator(0, 100000, value); _cost = value; }
-        }
-        public Item(string itemName, string itemInfo, double itemCost )
-        {
-            itemName = Name;
-            itemInfo = Info;
-            itemCost = Cost;
-            id++;
-        }
-            
     }
+
+    /// <summary> 
+    /// Возращает и задает информацию о товаре. 
+    /// Задает через проверку при помощи класса <see cref="ValueValidator"/>. Значение должно быть не больше 1000. 
+    /// </summary> 
+    public string Info
+    {
+        get { return _info; }
+        set
+        {
+            ValueValidator.LengthValidator(0, 1000, value);
+            _info = value;
+        }
+    }
+
+    /// <summary> 
+    /// Возращает и задает цену товара. 
+    /// Задает через проверку при помощи класса <see cref="ValueValidator"/>. Значение должно быть в диапазоне от 0 до 100000. 
+    /// </summary> 
+    public double Cost
+    {
+        get { return _cost; }
+        set
+        {
+            ValueValidator.CostValidator(0, 100000,value);
+            _cost = value;
+        }
+    }
+    /// <summary> 
+    /// Хранит данные о количестве покупателей. 
+    /// </summary> 
+    public static int AllItemsCount { get { return _allItemsCount; } }
+
+    /// <summary> 
+    /// Создает экземпляр класса <see cref="Item"/>. 
+    /// </summary> 
+    public Item()
+    {
+        Name = "Water";
+        Info = "Used by people to drink ";
+        Cost = 39.99;
+        _id = ++_allItemsCount;
+    }
+
+    /// <summary> 
+    /// Создает экземпляр класса <see cref="Item"/>. 
+    /// </summary> 
+    /// <param name="name">Имя товара. Должно быть не длиннее 200 символов.</param> 
+    /// <param name="info">Информация о товаре. Должна быть не длиннее 1000 символов.</param> 
+    /// <param name="price">Цена товара. Должна быть в диапазоне от 0 до 100000.</param> 
+    public Item(string name, string info, double cost)
+    {
+        Name = name;
+        Info = info;
+        Cost = cost;
+        _id = ++_allItemsCount;
+    }
+
+}
