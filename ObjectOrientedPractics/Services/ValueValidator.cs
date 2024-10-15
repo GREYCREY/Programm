@@ -30,4 +30,9 @@ class ValueValidator
         if (value > minCost && value < maxCost) { return value; }
         else { throw new ArgumentException(nameof(value)); }
     }
+    public static int IntValueValidator(int minValue, int maxValue, int value)
+    {
+        if (value > minValue && value < maxValue) { return value; }
+        else { throw new ArgumentException(nameof(value)); }
+    }
 }

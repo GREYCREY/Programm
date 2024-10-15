@@ -29,6 +29,7 @@
     /// Возращает уникальный номер товара. 
     /// </summary> 
     public int Id { get { return _id; } }
+    public Category Category { get; set; }
 
     /// <summary> 
     /// Возращает и задает название товара. 
@@ -85,6 +86,8 @@
         Info = "Used by people to drink ";
         Cost = 39.99;
         _id = ++_allItemsCount;
+        Category = Category.Food;
+        
     }
 
     /// <summary> 
@@ -93,12 +96,14 @@
     /// <param name="name">Имя товара. Должно быть не длиннее 200 символов.</param> 
     /// <param name="info">Информация о товаре. Должна быть не длиннее 1000 символов.</param> 
     /// <param name="price">Цена товара. Должна быть в диапазоне от 0 до 100000.</param> 
-    public Item(string name, string info, double cost)
+    public Item(string name, string info, double cost, Category category)
     {
         Name = name;
         Info = info;
         Cost = cost;
         _id = ++_allItemsCount;
+        Category = category;
+
     }
 
 }
