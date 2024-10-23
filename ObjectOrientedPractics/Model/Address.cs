@@ -1,18 +1,17 @@
 ﻿public class Address
 {
-    private short _index;
+    private int _index;
     private string _country;
     private string _city;
     private string _street;
     private string _building;
     private string _apartment;
 
-    public short Index
+    public int Index
     {
         get { return _index; }
         set
         {
-            ValueValidator.IntValueValidator(100000, 999999, _index);
             _index = value;
         }
     }
@@ -68,7 +67,7 @@
     }
     public Address()
     {
-        Index = 0;
+        Index = 821394;
         Country = "Kazahstan";
         City = "Semey";
         Street = "Proletarian";
@@ -76,7 +75,7 @@
         Apartment = "4";
 
     }
-    public Address(short index, string country, string city, string street, string building, string apartment)
+    public Address(int index, string country, string city, string street, string building, string apartment)
     {
         Index = index;
         Country = country;

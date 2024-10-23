@@ -26,12 +26,20 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список клиентов.
         /// </summary>
-        private static List<Customer> _customer = new List<Customer>();
+        private List<Customer> _customer;
+        public List<Customer> Customer
+        {
+            get { return _customer; }
+            set
+            {
+                _customer = value;
+            }
+        }
 
         /// <summary>
         /// Текущий выбранный клиент.
         /// </summary>
-        private static Customer _currentCustomer = null;
+        private static Customer _currentCustomer = new Customer();
 
         /// <summary>
         /// Обработчик события изменения выбранного клиента в списке.
@@ -41,17 +49,18 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="e">Аргументы события.</param>
         private void CustomerListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CustomerListBox.SelectedIndex < 0)
+            if (CustomerListBox.SelectedIndex == -1)
             {
                 CustomerFullNameRichTextBox.Text = string.Empty;
-                CustomerAddressRichTextBox.Text = string.Empty;
+
                 CustomerIDTextBox.Text = string.Empty;
             }
             else
             {
+                _currentCustomer.Address = addressControl.Address;
                 _currentCustomer = _customer[CustomerListBox.SelectedIndex];
                 CustomerFullNameRichTextBox.Text = _currentCustomer.FullName.ToString();
-                CustomerAddressRichTextBox.Text = _currentCustomer.Address.ToString();
+                addressControl.Address = _currentCustomer.Address;
                 CustomerIDTextBox.Text = _currentCustomer.Id.ToString();
             }
         }
@@ -64,7 +73,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="e">Аргументы события.</param>
         private void CustomerFullNameRichTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(CustomerFullNameRichTextBox.Text)) return;
+            if (string.IsNullOrEmpty(CustomerFullNameRichTextBox.Text) || CustomerListBox.SelectedIndex == -1) return;
             try
             {
                 CustomerFullNameRichTextBox.BackColor = Color.White;
@@ -83,20 +92,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         /// <param name="sender">Источник события.</param>
         /// <param name="e">Аргументы события.</param>
-        private void CustomerAddressRichTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(CustomerAddressRichTextBox.Text)) return;
-            try
-            {
-                CustomerAddressRichTextBox.BackColor = Color.White;
-                string customerAddress = CustomerAddressRichTextBox.Text;
-                _currentCustomer.Address = customerAddress;
-            }
-            catch (Exception)
-            {
-                CustomerAddressRichTextBox.BackColor = Color.LightPink;
-            }
-        }
+
 
         /// <summary>
         /// Обработчик события удаления выбранного клиента.
@@ -122,9 +118,15 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="e">Аргументы события.</param>
         private void AddItem_Click(object sender, EventArgs e)
         {
-            Customer newCustomer = new Customer("London", "Alex");
+            Customer newCustomer = new Customer();
+            newCustomer.Address = new Address();
             _customer.Add(newCustomer);
             CustomerListBox.Items.Add(newCustomer);
+        }
+
+        private void SelectedItemGroupBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

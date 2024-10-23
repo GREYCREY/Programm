@@ -1,7 +1,7 @@
-﻿enum Category
+﻿public enum Category
 {
     Car,
-    Medecine,
+    Medicine,
     Electronics,
     Food,
     Furniture,

@@ -1,4 +1,4 @@
-﻿class Item
+﻿public class Item
 {
     /// <summary> 
     /// Хранит в себе порядковые номера товаров. 
