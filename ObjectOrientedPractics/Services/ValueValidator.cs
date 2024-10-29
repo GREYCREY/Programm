@@ -13,8 +13,8 @@ class ValueValidator
     /// <exception cref="ArgumentException">Выбрасывается, если длина строки не соответствует заданным параметрам.</exception>
     public static  string LengthValidator(int minLength, int maxLength, string value)
     {
-        if (value.Length > minLength && value.Length < maxLength) { return value; }
-        else { throw new ArgumentException(nameof(value)); }
+        if (value.Length >= minLength && value.Length <= maxLength) { return value; }
+        else { throw new ArgumentException(value); }
     }
 
     /// <summary>
@@ -27,7 +27,12 @@ class ValueValidator
     /// <exception cref="ArgumentException">Выбрасывается, если стоимость не соответствует заданным параметрам.</exception>
     public static double CostValidator(double minCost, double maxCost, double value)
     {
-        if (value > minCost && value < maxCost) { return value; }
+        if (value >= minCost && value <= maxCost) { return value; }
         else { throw new ArgumentException(nameof(value)); }
+    }
+    public static int IntValueValidator(int minValue, int maxValue, int value)
+    {
+        if (value >= minValue && value <= maxValue) { return value; }
+        else { throw new ArgumentException(value.ToString()); }
     }
 }

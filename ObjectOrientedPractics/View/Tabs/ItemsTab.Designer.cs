@@ -33,6 +33,8 @@
             DeleteButton = new Button();
             ItemsGroupBox = new GroupBox();
             SelectedItemGroupBox = new GroupBox();
+            CategoryItemComboBox = new ComboBox();
+            CategoryItemLabel = new Label();
             DescriptionSelectedItemRichTextBox = new RichTextBox();
             descriptionSelectedItemLable = new Label();
             NameSelectedItemRichTextBox = new RichTextBox();
@@ -41,6 +43,7 @@
             CostSelectedItemLabel = new Label();
             IDSelectedItemLabel = new Label();
             IDSelectedItemTextBox = new TextBox();
+            SaveButton = new Button();
             ItemsGroupBox.SuspendLayout();
             SelectedItemGroupBox.SuspendLayout();
             SuspendLayout();
@@ -81,6 +84,7 @@
             // ItemsGroupBox
             // 
             ItemsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            ItemsGroupBox.Controls.Add(SaveButton);
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Controls.Add(DeleteButton);
             ItemsGroupBox.Controls.Add(AddButton);
@@ -94,6 +98,8 @@
             // SelectedItemGroupBox
             // 
             SelectedItemGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SelectedItemGroupBox.Controls.Add(CategoryItemComboBox);
+            SelectedItemGroupBox.Controls.Add(CategoryItemLabel);
             SelectedItemGroupBox.Controls.Add(DescriptionSelectedItemRichTextBox);
             SelectedItemGroupBox.Controls.Add(descriptionSelectedItemLable);
             SelectedItemGroupBox.Controls.Add(NameSelectedItemRichTextBox);
@@ -109,10 +115,28 @@
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
             // 
+            // CategoryItemComboBox
+            // 
+            CategoryItemComboBox.FormattingEnabled = true;
+            CategoryItemComboBox.Location = new Point(70, 105);
+            CategoryItemComboBox.Name = "CategoryItemComboBox";
+            CategoryItemComboBox.Size = new Size(100, 23);
+            CategoryItemComboBox.TabIndex = 9;
+            CategoryItemComboBox.SelectedIndexChanged += CategoryItemComboBox_SelectedIndexChanged;
+            // 
+            // CategoryItemLabel
+            // 
+            CategoryItemLabel.AutoSize = true;
+            CategoryItemLabel.Location = new Point(6, 113);
+            CategoryItemLabel.Name = "CategoryItemLabel";
+            CategoryItemLabel.Size = new Size(58, 15);
+            CategoryItemLabel.TabIndex = 8;
+            CategoryItemLabel.Text = "Category:";
+            // 
             // DescriptionSelectedItemRichTextBox
             // 
             DescriptionSelectedItemRichTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            DescriptionSelectedItemRichTextBox.Location = new Point(6, 259);
+            DescriptionSelectedItemRichTextBox.Location = new Point(6, 278);
             DescriptionSelectedItemRichTextBox.Name = "DescriptionSelectedItemRichTextBox";
             DescriptionSelectedItemRichTextBox.Size = new Size(455, 96);
             DescriptionSelectedItemRichTextBox.TabIndex = 7;
@@ -122,7 +146,7 @@
             // descriptionSelectedItemLable
             // 
             descriptionSelectedItemLable.AutoSize = true;
-            descriptionSelectedItemLable.Location = new Point(6, 241);
+            descriptionSelectedItemLable.Location = new Point(6, 260);
             descriptionSelectedItemLable.Name = "descriptionSelectedItemLable";
             descriptionSelectedItemLable.Size = new Size(70, 15);
             descriptionSelectedItemLable.TabIndex = 6;
@@ -131,7 +155,7 @@
             // NameSelectedItemRichTextBox
             // 
             NameSelectedItemRichTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NameSelectedItemRichTextBox.Location = new Point(6, 133);
+            NameSelectedItemRichTextBox.Location = new Point(6, 161);
             NameSelectedItemRichTextBox.Name = "NameSelectedItemRichTextBox";
             NameSelectedItemRichTextBox.Size = new Size(455, 96);
             NameSelectedItemRichTextBox.TabIndex = 5;
@@ -141,7 +165,7 @@
             // NameSelectedItemLable
             // 
             NameSelectedItemLable.AutoSize = true;
-            NameSelectedItemLable.Location = new Point(6, 115);
+            NameSelectedItemLable.Location = new Point(6, 143);
             NameSelectedItemLable.Name = "NameSelectedItemLable";
             NameSelectedItemLable.Size = new Size(42, 15);
             NameSelectedItemLable.TabIndex = 4;
@@ -150,7 +174,7 @@
             // CostSelectedItemTextBox
             // 
             CostSelectedItemTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CostSelectedItemTextBox.Location = new Point(49, 68);
+            CostSelectedItemTextBox.Location = new Point(70, 68);
             CostSelectedItemTextBox.Name = "CostSelectedItemTextBox";
             CostSelectedItemTextBox.Size = new Size(100, 23);
             CostSelectedItemTextBox.TabIndex = 3;
@@ -159,7 +183,7 @@
             // CostSelectedItemLabel
             // 
             CostSelectedItemLabel.AutoSize = true;
-            CostSelectedItemLabel.Location = new Point(6, 75);
+            CostSelectedItemLabel.Location = new Point(6, 76);
             CostSelectedItemLabel.Name = "CostSelectedItemLabel";
             CostSelectedItemLabel.Size = new Size(34, 15);
             CostSelectedItemLabel.TabIndex = 2;
@@ -168,7 +192,7 @@
             // IDSelectedItemLabel
             // 
             IDSelectedItemLabel.AutoSize = true;
-            IDSelectedItemLabel.Location = new Point(6, 35);
+            IDSelectedItemLabel.Location = new Point(6, 39);
             IDSelectedItemLabel.Name = "IDSelectedItemLabel";
             IDSelectedItemLabel.Size = new Size(21, 15);
             IDSelectedItemLabel.TabIndex = 1;
@@ -176,11 +200,20 @@
             // 
             // IDSelectedItemTextBox
             // 
-            IDSelectedItemTextBox.Location = new Point(49, 31);
+            IDSelectedItemTextBox.Location = new Point(70, 31);
             IDSelectedItemTextBox.Name = "IDSelectedItemTextBox";
             IDSelectedItemTextBox.ReadOnly = true;
             IDSelectedItemTextBox.Size = new Size(100, 23);
             IDSelectedItemTextBox.TabIndex = 0;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(154, 497);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(39, 50);
+            SaveButton.TabIndex = 3;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
             // 
             // ItemsTab
             // 
@@ -212,5 +245,8 @@
         private Label NameSelectedItemLable;
         private RichTextBox DescriptionSelectedItemRichTextBox;
         private Label descriptionSelectedItemLable;
+        private ComboBox CategoryItemComboBox;
+        private Label CategoryItemLabel;
+        private Button SaveButton;
     }
 }

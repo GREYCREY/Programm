@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Класс, представляющий информацию о клиенте.
 /// </summary>
-internal class Customer
+public class Customer
 {
     /// <summary>
     /// Статическое поле, хранящее количество всех клиентов.
@@ -21,7 +21,7 @@ internal class Customer
     /// <summary>
     /// Адрес клиента.
     /// </summary>
-    private string _address;
+    private Address _address;
 
     /// <summary>
     /// Получает уникальный идентификатор клиента.
@@ -42,10 +42,10 @@ internal class Customer
     /// Получает или задает адрес клиента.
     /// Проводит проверку длины строки (не более 500 символов).
     /// </summary>
-    public string Address
+    public Address Address
     {
         get { return _address; }
-        set { ValueValidator.LengthValidator(0, 500, value); _address = value; }
+        set { _address = value; }
     }
 
     /// <summary>
@@ -59,10 +59,16 @@ internal class Customer
     /// </summary>
     /// <param name="address">Адрес клиента.</param>
     /// <param name="fullName">Полное имя клиента.</param>
-    public Customer(string address, string fullName)
+    public Customer(Address address, string fullName)
     {
         FullName = fullName;
         Address = address;
+        _id = _allCustomerCount++;
+    }
+    public Customer()
+    {
+        FullName = "Alex";
+        Address = new Address();
         _id = _allCustomerCount++;
     }
 }
