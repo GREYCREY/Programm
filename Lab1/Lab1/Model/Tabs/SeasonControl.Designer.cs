@@ -51,6 +51,7 @@
             SeasoncomboBox.Name = "SeasoncomboBox";
             SeasoncomboBox.Size = new Size(121, 23);
             SeasoncomboBox.TabIndex = 14;
+            SeasoncomboBox.SelectedIndexChanged += SeasonSwitch;
             SeasoncomboBox.Click += SeasonSwitch;
             // 
             // GoButton

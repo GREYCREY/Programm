@@ -22,13 +22,22 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+            CategoryItemComboBox_InitializeComponents();
         }
 
         /// <summary>
         /// Список созданных товаров.
         /// </summary>
-        private static List<Item> _items = new List<Item>();
-
+        private List<Item> _items;
+        public List<Item> Items
+        {
+            get { return _items; }
+            set
+            {
+                _items = value;
+                
+            }
+        }
         /// <summary>
         /// Текущий выбранный товар.
         /// </summary>
@@ -48,6 +57,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 DescriptionSelectedItemRichTextBox.Text = string.Empty;
                 NameSelectedItemRichTextBox.Text = string.Empty;
                 IDSelectedItemTextBox.Text = string.Empty;
+                CategoryItemComboBox.Items.Clear();
             }
             else
             {
@@ -56,7 +66,10 @@ namespace ObjectOrientedPractics.View.Tabs
                 DescriptionSelectedItemRichTextBox.Text = _currentItem.Info.ToString();
                 NameSelectedItemRichTextBox.Text = _currentItem.Name.ToString();
                 IDSelectedItemTextBox.Text = _currentItem.Id.ToString();
+                Item selectedItem = (Item)ItemsListBox.SelectedItem;
+                CategoryItemComboBox.SelectedItem = selectedItem.Category;
             }
+            
         }
 
         /// <summary>
@@ -121,6 +134,24 @@ namespace ObjectOrientedPractics.View.Tabs
                 DescriptionSelectedItemRichTextBox.BackColor = Color.LightPink;
             }
         }
+        private void CategoryItemComboBox_InitializeComponents()
+        {
+            CategoryItemComboBox.Items.AddRange(Enum.GetValues(typeof(Category)).Cast<object>().ToArray());
+            CategoryItemComboBox.SelectedIndex = 0;
+            
+
+        }
+        private void CategoryItemComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ItemsListBox.SelectedItem != null && CategoryItemComboBox.SelectedItem != null)
+            {
+                Item selectedItem = (Item)ItemsListBox.SelectedItem;
+                selectedItem.Category = (Category)CategoryItemComboBox.SelectedItem;
+                ItemsListBox.Items[ItemsListBox.SelectedIndex] = selectedItem;
+                
+
+            }
+        }
 
         /// <summary>
         /// Обновляет текстовое представление товаров в элементе ListBox.
@@ -166,7 +197,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="e">Аргументы события.</param>
         private void ItemsTab_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

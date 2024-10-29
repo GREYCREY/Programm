@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Address address2 = new Address();
             SelectedItemGroupBox = new GroupBox();
-            CustomerAddressRichTextBox = new RichTextBox();
-            CustomerAddressLable = new Label();
+            addressControl = new Controls.AddressControl();
             CustomerFullNameRichTextBox = new RichTextBox();
             CustomerFullNameLable = new Label();
             IDSelectedItemLabel = new Label();
@@ -46,8 +46,7 @@
             // SelectedItemGroupBox
             // 
             SelectedItemGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SelectedItemGroupBox.Controls.Add(CustomerAddressRichTextBox);
-            SelectedItemGroupBox.Controls.Add(CustomerAddressLable);
+            SelectedItemGroupBox.Controls.Add(addressControl);
             SelectedItemGroupBox.Controls.Add(CustomerFullNameRichTextBox);
             SelectedItemGroupBox.Controls.Add(CustomerFullNameLable);
             SelectedItemGroupBox.Controls.Add(IDSelectedItemLabel);
@@ -59,24 +58,19 @@
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Customer";
             // 
-            // CustomerAddressRichTextBox
+            // addressControl
             // 
-            CustomerAddressRichTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            CustomerAddressRichTextBox.Location = new Point(71, 109);
-            CustomerAddressRichTextBox.Name = "CustomerAddressRichTextBox";
-            CustomerAddressRichTextBox.Size = new Size(390, 96);
-            CustomerAddressRichTextBox.TabIndex = 7;
-            CustomerAddressRichTextBox.Text = "";
-            CustomerAddressRichTextBox.TextChanged += CustomerAddressRichTextBox_TextChanged;
-            // 
-            // CustomerAddressLable
-            // 
-            CustomerAddressLable.AutoSize = true;
-            CustomerAddressLable.Location = new Point(6, 112);
-            CustomerAddressLable.Name = "CustomerAddressLable";
-            CustomerAddressLable.Size = new Size(52, 15);
-            CustomerAddressLable.TabIndex = 6;
-            CustomerAddressLable.Text = "Address:";
+            address2.Apartment = "4";
+            address2.Building = "104";
+            address2.City = "Semey";
+            address2.Country = "Kazahstan";
+            address2.Index = 821394;
+            address2.Street = "Proletarian";
+            addressControl.Address = address2;
+            addressControl.Location = new Point(-6, 104);
+            addressControl.Name = "addressControl";
+            addressControl.Size = new Size(457, 150);
+            addressControl.TabIndex = 6;
             // 
             // CustomerFullNameRichTextBox
             // 
@@ -177,8 +171,6 @@
         #endregion
 
         private GroupBox SelectedItemGroupBox;
-        private RichTextBox CustomerAddressRichTextBox;
-        private Label CustomerAddressLable;
         private RichTextBox CustomerFullNameRichTextBox;
         private Label CustomerFullNameLable;
         private Label IDSelectedItemLabel;
@@ -187,5 +179,6 @@
         private Button DeleteButton;
         private Button AddButton;
         private GroupBox ItemsGroupBox;
+        private Controls.AddressControl addressControl;
     }
 }
