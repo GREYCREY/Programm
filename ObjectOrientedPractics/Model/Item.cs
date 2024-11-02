@@ -8,7 +8,7 @@
     /// <summary> 
     /// Хранит в себе уникальный порядковый номер.  
     /// </summary> 
-    readonly int _id;
+    private int _id;
 
     /// <summary> 
     /// Хранит в себе название товара. 
@@ -28,7 +28,7 @@
     /// <summary> 
     /// Возращает уникальный номер товара. 
     /// </summary> 
-    public int Id { get { return _id; } }
+    public int Id { get; private set; }
     public Category Category { get; set; }
 
     /// <summary> 
@@ -85,9 +85,10 @@
         Name = "Water";
         Info = "Used by people to drink ";
         Cost = 39.99;
-        _id = ++_allItemsCount;
         Category = Category.Food;
-        
+        Id = IdGenerator.GetNextId("Item");
+
+
     }
 
     /// <summary> 
@@ -103,6 +104,7 @@
         Cost = cost;
         _id = ++_allItemsCount;
         Category = category;
+        Id = IdGenerator.GetNextId("Item");
 
     }
 

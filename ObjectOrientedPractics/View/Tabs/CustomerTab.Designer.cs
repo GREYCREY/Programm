@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Address address2 = new Address();
+            Address address1 = new Address();
             SelectedItemGroupBox = new GroupBox();
             addressControl = new Controls.AddressControl();
             CustomerFullNameRichTextBox = new RichTextBox();
@@ -60,13 +60,13 @@
             // 
             // addressControl
             // 
-            address2.Apartment = "4";
-            address2.Building = "104";
-            address2.City = "Semey";
-            address2.Country = "Kazahstan";
-            address2.Index = 821394;
-            address2.Street = "Proletarian";
-            addressControl.Address = address2;
+            address1.Apartment = "4";
+            address1.Building = "104";
+            address1.City = "Semey";
+            address1.Country = "Kazahstan";
+            address1.Index = 821394;
+            address1.Street = "Proletarian";
+            addressControl.Address = address1;
             addressControl.Location = new Point(-6, 104);
             addressControl.Name = "addressControl";
             addressControl.Size = new Size(457, 150);

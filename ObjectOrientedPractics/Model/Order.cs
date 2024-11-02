@@ -1,59 +1,41 @@
 ﻿public class Order
 {
-    readonly int _id;
+    private int _id;
     private string _date;
-    private string _diliveryAddress;
-    private List<Item> _itemsList;
+    private Address _deliveryAddress;
+    
     private double _amount;
+    private OrderStatus _status;
     public int Id 
-    { 
-        get { return _id; } 
+    {
+        get; private set; 
     }
-    public string Date 
-    { 
-        get 
-        { 
-            return _date; 
-        } 
-        set 
-        {  
-            _date = value; 
-        } 
-    }
-    public string DiliveryAddress 
+    public DateTime Date { get; set; }
+    
+    public Address DeliveryAddress 
     { 
         get 
         {  
-            return _diliveryAddress; 
+            return _deliveryAddress; 
         } 
         set 
         { 
-            _diliveryAddress = value;
+            _deliveryAddress = value;
         } 
     }
-    public List<Item> ItemsList 
-    { 
-        get 
-        { 
-            return _itemsList; 
-        }
-        
-        set 
-        {
-            _itemsList = value; 
-        } 
-    }
+    public Cart Cart { get; set; }
+    
     public double Amount
     {
         get
         {
-            if (_itemsList == null || _itemsList.Count == 0)
+            if (Cart.Items == null)
             {
                 return 0.0;
             }
 
             double totalAmount = 0.0;
-            foreach (Item item in _itemsList)
+            foreach (Item item in Cart.Items)
             {
                 totalAmount += item.Cost;
             }
@@ -61,7 +43,28 @@
 
 
         }
+        set { _amount = value; }
 
+    }
+    public OrderStatus Status
+    {
+        get;
+        set;
+    }
+    public Order(Customer customer, double total)
+    {
+        Id = IdGenerator.GetNextId("Order");
+        Date = DateTime.Now;
+        DeliveryAddress = customer.Address;
+        Cart = customer.Cart;
+        Amount = Cart.Amount;
+        Status = OrderStatus.New;
+        Amount = total;
+    }
+    public Order()
+    {
+        Id = IdGenerator.GetNextId("Order");
+        Date = DateTime.Now;
     }
 }
 
