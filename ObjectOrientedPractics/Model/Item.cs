@@ -38,11 +38,7 @@
     public string Name
     {
         get { return _name; }
-        set
-        {
-            ValueValidator.LengthValidator(0, 200, value);
-            _name = value;
-        }
+        set { if (ValueValidator.AssertStringOnLength(value, 200, Name)) _name = value; }
     }
 
     /// <summary> 
@@ -52,11 +48,7 @@
     public string Info
     {
         get { return _info; }
-        set
-        {
-            ValueValidator.LengthValidator(0, 1000, value);
-            _info = value;
-        }
+        set { if (ValueValidator.AssertStringOnLength(value, 1000, Info)) _info = value; }
     }
 
     /// <summary> 
@@ -66,11 +58,7 @@
     public double Cost
     {
         get { return _cost; }
-        set
-        {
-            ValueValidator.CostValidator(0, 100000,value);
-            _cost = value;
-        }
+        set { if (value > 0 && value < 100000) _cost = value; }
     }
     /// <summary> 
     /// Хранит данные о количестве покупателей. 

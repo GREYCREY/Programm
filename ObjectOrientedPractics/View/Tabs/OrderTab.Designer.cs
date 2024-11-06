@@ -100,7 +100,10 @@
             DataGridView.Location = new Point(0, 18);
             DataGridView.MultiSelect = false;
             DataGridView.Name = "DataGridView";
+            DataGridView.ReadOnly = true;
             DataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DataGridView.ShowCellToolTips = false;
+            DataGridView.ShowEditingIcon = false;
             DataGridView.Size = new Size(303, 479);
             DataGridView.TabIndex = 4;
             DataGridView.SelectionChanged += DataGridView_SelectionChanged;
@@ -109,36 +112,42 @@
             // 
             IdColumn.HeaderText = "Id";
             IdColumn.Name = "IdColumn";
+            IdColumn.ReadOnly = true;
             IdColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // DateColumn
             // 
             DateColumn.HeaderText = "Date";
             DateColumn.Name = "DateColumn";
+            DateColumn.ReadOnly = true;
             DateColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // FullnameColumn
             // 
             FullnameColumn.HeaderText = "Full Name";
             FullnameColumn.Name = "FullnameColumn";
+            FullnameColumn.ReadOnly = true;
             FullnameColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // DeliveryAddressColumn
             // 
             DeliveryAddressColumn.HeaderText = "Delivery Address";
             DeliveryAddressColumn.Name = "DeliveryAddressColumn";
+            DeliveryAddressColumn.ReadOnly = true;
             DeliveryAddressColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // AmountColumn
             // 
             AmountColumn.HeaderText = "Amount";
             AmountColumn.Name = "AmountColumn";
+            AmountColumn.ReadOnly = true;
             AmountColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // StatusColumn
             // 
             StatusColumn.HeaderText = "Status";
             StatusColumn.Name = "StatusColumn";
+            StatusColumn.ReadOnly = true;
             StatusColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
             // 
             // OrdersLabel

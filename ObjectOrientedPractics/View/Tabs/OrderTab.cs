@@ -53,7 +53,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 SelectedOrderItemsListBox.Items.Clear();
                 if (OrderAddressControl != null)
                 {
-                    OrderAddressControl.Address = _currentOrder.DeliveryAddress;
+                    OrderAddressControl.Address = _currentOrder.Address;
                 }
                 OrderIDTextBox.Text = _currentOrder.Id.ToString();
                 OrderCreatedTextBox.Text = _currentOrder.Date.ToString();

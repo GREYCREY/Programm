@@ -53,7 +53,7 @@ public class Customer
     public string FullName
     {
         get { return _fullname; }
-        set { ValueValidator.LengthValidator(0, 200, value); _fullname = value; }
+        set { if (ValueValidator.AssertStringOnLength(value, 200, FullName)) _fullname = value; }
     }
 
     /// <summary>

@@ -39,7 +39,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Текущий выбранный клиент.
         /// </summary>
-        private static Customer _currentCustomer = new Customer();
+        public Customer _currentCustomer;
 
         /// <summary>
         /// Обработчик события изменения выбранного клиента в списке.
@@ -57,8 +57,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
             else
             {
+                _currentCustomer = Customer[CustomerListBox.SelectedIndex];
                 _currentCustomer.Address = addressControl.Address;
-                _currentCustomer = _customer[CustomerListBox.SelectedIndex];
+                
                 CustomerFullNameRichTextBox.Text = _currentCustomer.FullName.ToString();
                 addressControl.Address = _currentCustomer.Address;
                 CustomerIDTextBox.Text = _currentCustomer.Id.ToString();

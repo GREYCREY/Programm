@@ -101,13 +101,13 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CurrentCustomer = _customers[CartCustomerComboBox.SelectedIndex];
 
-                ///if(CurrentCustomer.Cart.Items.Count > 0) 
-                //{
-                ///  foreach (Item item in CurrentCustomer.Cart.Items)
-                ///{
-                /// CartListBox.Items.Add(CurrentCustomer.Cart.Items);
-                ///}
-                ///}
+                if(CurrentCustomer.Cart.Items.Count > 0) 
+                {
+                  foreach (Item item in CurrentCustomer.Cart.Items)
+                    {
+                     CartListBox.Items.Add(CurrentCustomer.Cart.Items);
+                    }
+                }
 
 
             }
@@ -147,11 +147,14 @@ namespace ObjectOrientedPractics.View.Tabs
         private void CartCreateOrderButton_Click(object sender, EventArgs e)
         {
             if (CartCustomerComboBox.SelectedIndex < 0) return;
-            Order newOrder = new Order();
-            newOrder.DeliveryAddress = CurrentCustomer.Address;
+            if (CurrentCustomer == null || CurrentCustomer.Cart == null) return;
+            
+            Order newOrder = new Order(CurrentCustomer, CurrentCustomer.Cart.Amount);
+            newOrder.Address = CurrentCustomer.Address;
             newOrder.Cart.Items = CurrentCustomer.ItemsList;
             newOrder.Amount = CurrentCustomer.Cart.Amount;
             newOrder.Status = OrderStatus.New;
+            
             CurrentCustomer.OrdersList.Add(newOrder);
             CartListBox.Items.Clear();
             CurrentCustomer.Cart.Items.Clear();

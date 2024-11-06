@@ -1,33 +1,30 @@
-﻿public class Cart
+﻿public class Cart 
 {
+    public List<Item> Items { get; set; }
 
-    private List<Item> _items = new List<Item>();
-    public List<Item> Items
-    {
-        get { return _items; }
-        set { _items = value; }
-    }
     public double Amount
     {
         get
         {
-            if (_items == null || _items.Count == 0)
+            double amount = 0;
+            if (Items != null)
             {
-                return 0.0;
+                for (int i = 0; i < Items.Count; i++)
+                {
+                    amount += Items[i].Cost;
+                }
             }
-
-            double totalAmount = 0.0;
-            foreach (Item item in _items)
-            {
-                totalAmount += item.Cost;
-            }
-            return totalAmount;
-
-
+            return amount;
         }
-
     }
-
-
-
+    public Cart()
+    {
+        Items = new List<Item>(5);
+    }
+    public object Clone()
+    {
+        Cart copy = new();
+        copy.Items.AddRange([.. Items]);
+        return copy;
+    }
 }

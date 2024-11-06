@@ -40,10 +40,13 @@
             CartTabPage = new TabPage();
             cartsTab1 = new View.Tabs.CartsTab();
             OrderTabPage = new TabPage();
+            orderTab1 = new View.Tabs.OrderTab();
+            tabPage1 = new TabPage();
             CustomerTabPage.SuspendLayout();
             itemTabPage.SuspendLayout();
             TabControl.SuspendLayout();
             CartTabPage.SuspendLayout();
+            OrderTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // CustomerTabPage
@@ -93,6 +96,7 @@
             TabControl.Controls.Add(CustomerTabPage);
             TabControl.Controls.Add(CartTabPage);
             TabControl.Controls.Add(OrderTabPage);
+            TabControl.Controls.Add(tabPage1);
             TabControl.Location = new Point(2, -1);
             TabControl.Name = "TabControl";
             TabControl.SelectedIndex = 0;
@@ -125,6 +129,7 @@
             // 
             // OrderTabPage
             // 
+            OrderTabPage.Controls.Add(orderTab1);
             OrderTabPage.Location = new Point(4, 24);
             OrderTabPage.Name = "OrderTabPage";
             OrderTabPage.Padding = new Padding(3);
@@ -132,6 +137,25 @@
             OrderTabPage.TabIndex = 3;
             OrderTabPage.Text = "Order";
             OrderTabPage.UseVisualStyleBackColor = true;
+            // 
+            // orderTab1
+            // 
+            orderTab1.Customers = null;
+            orderTab1.Dock = DockStyle.Fill;
+            orderTab1.Location = new Point(3, 3);
+            orderTab1.Name = "orderTab1";
+            orderTab1.Size = new Size(842, 498);
+            orderTab1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(848, 504);
+            tabPage1.TabIndex = 4;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -142,6 +166,7 @@
             itemTabPage.ResumeLayout(false);
             TabControl.ResumeLayout(false);
             CartTabPage.ResumeLayout(false);
+            OrderTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -150,9 +175,11 @@
         private System.ComponentModel.IContainer components;
         private View.Tabs.ItemsTab itemsTab1;
         private View.Tabs.CustomerTab customerTab1;
+        private View.Tabs.OrderTab orderTab1;
         private TabControl TabControl;
         private TabPage CartTabPage;
         private View.Tabs.CartsTab cartsTab1;
         private TabPage OrderTabPage;
+        private TabPage tabPage1;
     }
 }

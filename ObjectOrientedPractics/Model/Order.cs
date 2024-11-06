@@ -1,70 +1,33 @@
-﻿public class Order
+﻿public class Order 
 {
-    private int _id;
-    private string _date;
-    private Address _deliveryAddress;
-    
-    private double _amount;
-    private OrderStatus _status;
-    public int Id 
-    {
-        get; private set; 
-    }
+    private readonly int _id;
+
+    private readonly DateTime _date;
+    public int Id { get; set; }
     public DateTime Date { get; set; }
-    
-    public Address DeliveryAddress 
-    { 
-        get 
-        {  
-            return _deliveryAddress; 
-        } 
-        set 
-        { 
-            _deliveryAddress = value;
-        } 
-    }
+    public OrderStatus Status { get; set; }
+
+    public Address Address { get; set; }
     public Cart Cart { get; set; }
-    
-    public double Amount
-    {
-        get
-        {
-            if (Cart.Items == null)
-            {
-                return 0.0;
-            }
+    public double Amount { get; set; }
+    public double Total { get; set; }
 
-            double totalAmount = 0.0;
-            foreach (Item item in Cart.Items)
-            {
-                totalAmount += item.Cost;
-            }
-            return totalAmount;
-
-
-        }
-        set { _amount = value; }
-
-    }
-    public OrderStatus Status
-    {
-        get;
-        set;
-    }
     public Order(Customer customer, double total)
     {
         Id = IdGenerator.GetNextId("Order");
         Date = DateTime.Now;
-        DeliveryAddress = customer.Address;
+        Address = customer.Address;
         Cart = customer.Cart;
         Amount = Cart.Amount;
         Status = OrderStatus.New;
-        Amount = total;
+        Total = total;
     }
-    public Order()
+    public bool Equals(Order? order2)
     {
-        Id = IdGenerator.GetNextId("Order");
-        Date = DateTime.Now;
+        if (order2 == null)
+            return false;
+        if (object.ReferenceEquals(this, order2))
+            return true;
+        return (Id == order2.Id);
     }
 }
-
