@@ -55,6 +55,7 @@ public class Customer
         get { return _fullname; }
         set { if (ValueValidator.AssertStringOnLength(value, 200, FullName)) _fullname = value; }
     }
+    public bool IsPriority { get; set; } = false;
 
     /// <summary>
     /// Получает или задает адрес клиента.

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Address address2 = new Address();
             Address address1 = new Address();
+            Address address2 = new Address();
             SelectedItemGroupBox = new GroupBox();
+            addressControl1 = new Controls.AddressControl();
             CustomerFullNameRichTextBox = new RichTextBox();
             CustomerFullNameLable = new Label();
             IDSelectedItemLabel = new Label();
@@ -40,7 +41,7 @@
             DeleteButton = new Button();
             AddButton = new Button();
             ItemsGroupBox = new GroupBox();
-            addressControl1 = new Controls.AddressControl();
+            PriorityCheckBox = new CheckBox();
             SelectedItemGroupBox.SuspendLayout();
             ItemsGroupBox.SuspendLayout();
             SuspendLayout();
@@ -48,6 +49,7 @@
             // SelectedItemGroupBox
             // 
             SelectedItemGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SelectedItemGroupBox.Controls.Add(PriorityCheckBox);
             SelectedItemGroupBox.Controls.Add(addressControl1);
             SelectedItemGroupBox.Controls.Add(CustomerFullNameRichTextBox);
             SelectedItemGroupBox.Controls.Add(CustomerFullNameLable);
@@ -59,6 +61,20 @@
             SelectedItemGroupBox.TabIndex = 6;
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Customer";
+            // 
+            // addressControl1
+            // 
+            address1.Apartment = "112";
+            address1.Building = "40";
+            address1.City = "Томск";
+            address1.Country = "Россия";
+            address1.Index = 123456;
+            address1.Street = "Пр. Ленина";
+            addressControl1.Address = address1;
+            addressControl1.Location = new Point(1, 140);
+            addressControl1.Name = "addressControl1";
+            addressControl1.Size = new Size(457, 161);
+            addressControl1.TabIndex = 6;
             // 
             // CustomerFullNameRichTextBox
             // 
@@ -156,19 +172,16 @@
             ItemsGroupBox.TabStop = false;
             ItemsGroupBox.Text = "Customer";
             // 
-            // addressControl1
+            // PriorityCheckBox
             // 
-            address1.Apartment = "112";
-            address1.Building = "40";
-            address1.City = "Томск";
-            address1.Country = "Россия";
-            address1.Index = 123456;
-            address1.Street = "Пр. Ленина";
-            addressControl1.Address = address1;
-            addressControl1.Location = new Point(1, 115);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(457, 161);
-            addressControl1.TabIndex = 6;
+            PriorityCheckBox.AutoSize = true;
+            PriorityCheckBox.Location = new Point(71, 115);
+            PriorityCheckBox.Name = "PriorityCheckBox";
+            PriorityCheckBox.Size = new Size(75, 19);
+            PriorityCheckBox.TabIndex = 8;
+            PriorityCheckBox.Text = "Is Priority";
+            PriorityCheckBox.UseVisualStyleBackColor = true;
+            PriorityCheckBox.CheckedChanged += PriorityCheckBox_CheckedChanged;
             // 
             // CustomerTab
             // 
@@ -197,5 +210,6 @@
         private GroupBox ItemsGroupBox;
         private Controls.AddressControl addressControl;
         private Controls.AddressControl addressControl1;
+        private CheckBox PriorityCheckBox;
     }
 }

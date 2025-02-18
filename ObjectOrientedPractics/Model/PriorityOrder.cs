@@ -16,7 +16,7 @@ namespace ObjectOrientedPractics.Model
         {
             DesiredTime = 0;
             DesiredDate = DateTime.Today.Date;
-            MessageBox.Show(Id.ToString());
+            
         }
     }
 }

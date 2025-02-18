@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectOrientedPractics.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -148,7 +149,18 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (CartCustomerComboBox.SelectedIndex < 0) return;
             if (CurrentCustomer == null || CurrentCustomer.Cart == null) return;
-            
+
+            if (CurrentCustomer.IsPriority == false)
+            {
+                Order order = new Order(CurrentCustomer, CurrentCustomer.Cart.Amount);
+                
+
+            }
+            else
+            {
+                PriorityOrder order = new PriorityOrder(CurrentCustomer, CurrentCustomer.Cart.Amount);
+                
+            }
             Order newOrder = new Order(CurrentCustomer, CurrentCustomer.Cart.Amount);
             newOrder.Address = CurrentCustomer.Address;
             newOrder.Cart.Items = CurrentCustomer.ItemsList;
@@ -173,5 +185,6 @@ namespace ObjectOrientedPractics.View.Tabs
 
 
         }
+        
     }
 }

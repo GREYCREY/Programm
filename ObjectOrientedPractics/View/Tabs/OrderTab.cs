@@ -16,6 +16,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public List<Customer>? Customers { get; set; }
         private List<Order>? _orders = new List<Order>(5);
         private Order _currentOrder;
+        private PriorityOrder _currentPriorityOrder;
 
         public void RefreshData()
         {
@@ -77,6 +78,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     DataGridView.SelectedRows[0].Cells[5].Value = _currentOrder.Status;
                 }
+            }
+        }
+
+        private void DeliveryTimeDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (_currentPriorityOrder != null)
+            {
+                _currentPriorityOrder.DesiredDate = DeliveryTimeDateTimePicker.Value;
             }
         }
     }

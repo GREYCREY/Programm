@@ -48,6 +48,9 @@
             SelectedOrderItemsListBox = new ListBox();
             OredrAmountLabel = new Label();
             OrderAmountDisplayLabel = new Label();
+            DeliveryTimeDateTimePicker = new DateTimePicker();
+            DeliveryTimeLabel = new Label();
+            PriorityOptionsLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -233,10 +236,40 @@
             OrderAmountDisplayLabel.TabIndex = 14;
             OrderAmountDisplayLabel.Text = "0.00";
             // 
+            // DeliveryTimeDateTimePicker
+            // 
+            DeliveryTimeDateTimePicker.Location = new Point(638, 21);
+            DeliveryTimeDateTimePicker.Name = "DeliveryTimeDateTimePicker";
+            DeliveryTimeDateTimePicker.Size = new Size(89, 23);
+            DeliveryTimeDateTimePicker.TabIndex = 15;
+            DeliveryTimeDateTimePicker.ValueChanged += DeliveryTimeDateTimePicker_ValueChanged;
+            // 
+            // DeliveryTimeLabel
+            // 
+            DeliveryTimeLabel.AutoSize = true;
+            DeliveryTimeLabel.Location = new Point(545, 27);
+            DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            DeliveryTimeLabel.Size = new Size(81, 15);
+            DeliveryTimeLabel.TabIndex = 18;
+            DeliveryTimeLabel.Text = "Delivery Time:";
+            // 
+            // PriorityOptionsLabel
+            // 
+            PriorityOptionsLabel.AutoSize = true;
+            PriorityOptionsLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            PriorityOptionsLabel.Location = new Point(545, 0);
+            PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            PriorityOptionsLabel.Size = new Size(94, 15);
+            PriorityOptionsLabel.TabIndex = 17;
+            PriorityOptionsLabel.Text = "Priority Options";
+            // 
             // OrderTab
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(DeliveryTimeLabel);
+            Controls.Add(PriorityOptionsLabel);
+            Controls.Add(DeliveryTimeDateTimePicker);
             Controls.Add(OrderAmountDisplayLabel);
             Controls.Add(OredrAmountLabel);
             Controls.Add(SelectedOrderItemsListBox);
@@ -280,5 +313,8 @@
         private DataGridViewTextBoxColumn DeliveryAddressColumn;
         private DataGridViewTextBoxColumn AmountColumn;
         private DataGridViewTextBoxColumn StatusColumn;
+        private DateTimePicker DeliveryTimeDateTimePicker;
+        private Label DeliveryTimeLabel;
+        private Label PriorityOptionsLabel;
     }
 }
