@@ -1,4 +1,7 @@
-﻿/// <summary>
+﻿using System.Security.Cryptography.X509Certificates;
+
+
+/// <summary>
 /// Класс, представляющий информацию о клиенте.
 /// </summary>
 public class Customer
@@ -6,12 +9,10 @@ public class Customer
     /// <summary>
     /// Статическое поле, хранящее количество всех клиентов.
     /// </summary>
-    private static int _allCustomerCount;
 
     /// <summary>
     /// Уникальный идентификатор клиента (только для чтения).
     /// </summary>
-    readonly int _id;
 
     /// <summary>
     /// Полное имя клиента.
@@ -21,12 +22,29 @@ public class Customer
     /// <summary>
     /// Адрес клиента.
     /// </summary>
-    private Address _address;
+    private Address _address = new Address();
+    private Cart _cart = new Cart();
+    private List<Item> _itemsList=  new List<Item>();
+    private List<Order> _ordersList = new List<Order>() ;
+    public List<Order> OrdersList
+    {
+        get { return _ordersList; }
+        set { _ordersList = value; }
+    }
+    public List<Item> ItemsList
+    {
+        get { return _itemsList; }
+        set { _itemsList = value; }
+    }
+    public Cart Cart
+    {
+        get { return _cart; }
+        set { _cart = value; }
+    }
 
     /// <summary>
     /// Получает уникальный идентификатор клиента.
     /// </summary>
-    public int Id { get { return _id; } }
 
     /// <summary>
     /// Получает или задает полное имя клиента.
@@ -35,8 +53,9 @@ public class Customer
     public string FullName
     {
         get { return _fullname; }
-        set { ValueValidator.LengthValidator(0, 200, value); _fullname = value; }
+        set { if (ValueValidator.AssertStringOnLength(value, 200, FullName)) _fullname = value; }
     }
+    public bool IsPriority { get; set; } = false;
 
     /// <summary>
     /// Получает или задает адрес клиента.
@@ -47,11 +66,11 @@ public class Customer
         get { return _address; }
         set { _address = value; }
     }
+    public int Id { get; private set; }
 
     /// <summary>
     /// Получает общее количество клиентов.
     /// </summary>
-    public static int AllCustomerCount { get { return _allCustomerCount; } }
 
     /// <summary>
     /// Конструктор, инициализирующий новый экземпляр класса Customer.
@@ -59,16 +78,20 @@ public class Customer
     /// </summary>
     /// <param name="address">Адрес клиента.</param>
     /// <param name="fullName">Полное имя клиента.</param>
-    public Customer(Address address, string fullName)
+    List<Cart> carts = new List<Cart>();
+    public Customer(Address address, string fullName, Cart cart, List<Item> itemsList, List<Order> ordersList)
     {
         FullName = fullName;
         Address = address;
-        _id = _allCustomerCount++;
+        Cart = cart;
+        _ordersList = ordersList;
+        OrdersList = ordersList;
     }
     public Customer()
     {
         FullName = "Alex";
         Address = new Address();
-        _id = _allCustomerCount++;
+
+        Id = IdGenerator.GetNextId("Customer");
     }
 }

@@ -8,7 +8,7 @@
     /// <summary> 
     /// Хранит в себе уникальный порядковый номер.  
     /// </summary> 
-    readonly int _id;
+    private int _id;
 
     /// <summary> 
     /// Хранит в себе название товара. 
@@ -28,7 +28,7 @@
     /// <summary> 
     /// Возращает уникальный номер товара. 
     /// </summary> 
-    public int Id { get { return _id; } }
+    public int Id { get; private set; }
     public Category Category { get; set; }
 
     /// <summary> 
@@ -38,11 +38,7 @@
     public string Name
     {
         get { return _name; }
-        set
-        {
-            ValueValidator.LengthValidator(0, 200, value);
-            _name = value;
-        }
+        set { if (ValueValidator.AssertStringOnLength(value, 200, Name)) _name = value; }
     }
 
     /// <summary> 
@@ -52,11 +48,7 @@
     public string Info
     {
         get { return _info; }
-        set
-        {
-            ValueValidator.LengthValidator(0, 1000, value);
-            _info = value;
-        }
+        set { if (ValueValidator.AssertStringOnLength(value, 1000, Info)) _info = value; }
     }
 
     /// <summary> 
@@ -66,11 +58,7 @@
     public double Cost
     {
         get { return _cost; }
-        set
-        {
-            ValueValidator.CostValidator(0, 100000,value);
-            _cost = value;
-        }
+        set { if (value > 0 && value < 100000) _cost = value; }
     }
     /// <summary> 
     /// Хранит данные о количестве покупателей. 
@@ -85,9 +73,10 @@
         Name = "Water";
         Info = "Used by people to drink ";
         Cost = 39.99;
-        _id = ++_allItemsCount;
         Category = Category.Food;
-        
+        Id = IdGenerator.GetNextId("Item");
+
+
     }
 
     /// <summary> 
@@ -103,6 +92,7 @@
         Cost = cost;
         _id = ++_allItemsCount;
         Category = category;
+        Id = IdGenerator.GetNextId("Item");
 
     }
 

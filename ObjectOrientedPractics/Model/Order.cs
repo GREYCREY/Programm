@@ -1,67 +1,33 @@
-﻿public class Order
+﻿public class Order 
 {
-    readonly int _id;
-    private string _date;
-    private string _diliveryAddress;
-    private List<Item> _itemsList;
-    private double _amount;
-    public int Id 
-    { 
-        get { return _id; } 
-    }
-    public string Date 
-    { 
-        get 
-        { 
-            return _date; 
-        } 
-        set 
-        {  
-            _date = value; 
-        } 
-    }
-    public string DiliveryAddress 
-    { 
-        get 
-        {  
-            return _diliveryAddress; 
-        } 
-        set 
-        { 
-            _diliveryAddress = value;
-        } 
-    }
-    public List<Item> ItemsList 
-    { 
-        get 
-        { 
-            return _itemsList; 
-        }
-        
-        set 
-        {
-            _itemsList = value; 
-        } 
-    }
-    public double Amount
+    private readonly int _id;
+
+    private readonly DateTime _date;
+    public int Id { get; set; }
+    public DateTime Date { get; set; }
+    public OrderStatus Status { get; set; }
+
+    public Address Address { get; set; }
+    public Cart Cart { get; set; }
+    public double Amount { get; set; }
+    public double Total { get; set; }
+
+    public Order(Customer customer, double total)
     {
-        get
-        {
-            if (_itemsList == null || _itemsList.Count == 0)
-            {
-                return 0.0;
-            }
-
-            double totalAmount = 0.0;
-            foreach (Item item in _itemsList)
-            {
-                totalAmount += item.Cost;
-            }
-            return totalAmount;
-
-
-        }
-
+        Id = IdGenerator.GetNextId("Order");
+        Date = DateTime.Now;
+        Address = customer.Address;
+        Cart = customer.Cart;
+        Amount = Cart.Amount;
+        Status = OrderStatus.New;
+        Total = total;
+    }
+    public bool Equals(Order? order2)
+    {
+        if (order2 == null)
+            return false;
+        if (object.ReferenceEquals(this, order2))
+            return true;
+        return (Id == order2.Id);
     }
 }
-

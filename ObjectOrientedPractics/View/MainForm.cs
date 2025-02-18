@@ -10,10 +10,18 @@ namespace ObjectOrientedPractics
             InitializeComponent();
             customerTab1.Customer = _store.Customers;
             itemsTab1.Items = _store.Items;
+            cartsTab1.Items = _store.Items;
+            cartsTab1.Customers = _store.Customers;
+            orderTab1.Customers = _store.Customers;
         }
         private Store _store = new Store();
 
-        private void customerTab_Load(object sender, EventArgs e)
+        private void SelectedTabChanged(object sender, EventArgs e)
+        {
+            cartsTab1.RefreshData();
+            orderTab1.RefreshData();
+        }
+        private void cartsTab1_Load(object sender, EventArgs e)
         {
 
         }

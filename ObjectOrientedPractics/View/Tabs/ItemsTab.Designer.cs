@@ -43,7 +43,6 @@
             CostSelectedItemLabel = new Label();
             IDSelectedItemLabel = new Label();
             IDSelectedItemTextBox = new TextBox();
-            SaveButton = new Button();
             ItemsGroupBox.SuspendLayout();
             SelectedItemGroupBox.SuspendLayout();
             SuspendLayout();
@@ -84,7 +83,6 @@
             // ItemsGroupBox
             // 
             ItemsGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            ItemsGroupBox.Controls.Add(SaveButton);
             ItemsGroupBox.Controls.Add(ItemsListBox);
             ItemsGroupBox.Controls.Add(DeleteButton);
             ItemsGroupBox.Controls.Add(AddButton);
@@ -206,15 +204,6 @@
             IDSelectedItemTextBox.Size = new Size(100, 23);
             IDSelectedItemTextBox.TabIndex = 0;
             // 
-            // SaveButton
-            // 
-            SaveButton.Location = new Point(154, 497);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(39, 50);
-            SaveButton.TabIndex = 3;
-            SaveButton.Text = "Save";
-            SaveButton.UseVisualStyleBackColor = true;
-            // 
             // ItemsTab
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -247,6 +236,5 @@
         private Label descriptionSelectedItemLable;
         private ComboBox CategoryItemComboBox;
         private Label CategoryItemLabel;
-        private Button SaveButton;
     }
 }
